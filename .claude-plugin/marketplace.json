@@ -1,0 +1,34 @@
+{
+  "name": "skill-agente",
+  "id": "skill-agente",
+  "owner": {
+    "name": "diego"
+  },
+  "metadata": {
+    "description": "Skills para diseño web por tiers, UI hunting, validación de arquitectura, y generación de nuevas skills",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "skill-agente",
+      "source": "./",
+      "description": "Diseño web (eco/medio/pro/3d/video/corporate/premium), UI style hunting, validación de arquitectura Django+Next.js, y generador de skills",
+      "version": "1.0.0",
+      "author": {
+        "name": "diego"
+      },
+      "keywords": [
+        "design",
+        "ui",
+        "web-design",
+        "skill-generator",
+        "architecture",
+        "3d",
+        "video",
+        "corporate",
+        "premium"
+      ],
+      "category": "design"
+    }
+  ]
+}

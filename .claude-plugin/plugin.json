@@ -1,0 +1,25 @@
+{
+  "name": "skill-agente",
+  "description": "Skills para diseño web por tiers, UI hunting, validación de arquitectura, orquestación de pipeline y guardado de resultados.",
+  "version": "1.0.0",
+  "author": {
+    "name": "diego"
+  },
+  "license": "MIT",
+  "keywords": ["design", "ui", "architecture", "skill-generator", "web-design", "pipeline"],
+  "skills": [
+    "./skills/skill-creator",
+    "./skills/skill-pipeline",
+    "./skills/resultado-save",
+    "./skills/ui-style-hunter",
+    "./skills/arch-validator",
+    "./skills/design-3d",
+    "./skills/design-images",
+    "./skills/design-video",
+    "./skills/design-corporate",
+    "./skills/design-premium",
+    "./skills/design-eco",
+    "./skills/design-medio",
+    "./skills/design-pro"
+  ]
+}
