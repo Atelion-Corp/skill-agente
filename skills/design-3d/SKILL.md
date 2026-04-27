@@ -132,8 +132,31 @@ const supportsWebGL = typeof window !== 'undefined' && !!window.WebGLRenderingCo
 - `polypizza.pizza` — low-poly gratuitos
 - `market.pmnd.rs` — assets para R3F
 
+## Grafo 3D tipo Obsidian (neuronas)
+
+Para visualizar relaciones, documentación o actividades como red neuronal: usar **`design-graph`** skill.
+
+Resumen rápido si necesitás integrar en escena Three.js:
+
+```bash
+npm install react-force-graph-3d d3-force-3d
+```
+
+```tsx
+// Overlay encima de Canvas R3F
+import ForceGraph3D from 'react-force-graph-3d'
+
+// No mezclar con Canvas — usar como capa independiente
+<div style={{ position: 'absolute', inset: 0 }}>
+  <ForceGraph3D graphData={data} backgroundColor="transparent" />
+</div>
+```
+
+Para implementación completa: activar `design-graph` skill.
+
 ## Notas
 
 - Three.js + Next.js requiere `'use client'` en el componente Canvas
 - `useGLTF` de Drei hace preload automático — llamar `useGLTF.preload('/model.glb')` fuera del componente
 - Evitar escenas +5MB en mobile — usar LOD o versión simplificada
+- Para grafos de neuronas/conocimiento: preferir `design-graph` (react-force-graph-3d) sobre R3F manual

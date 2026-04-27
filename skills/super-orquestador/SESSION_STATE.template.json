@@ -1,0 +1,21 @@
+{
+  "v": 1,
+  "tenant_id": "default-tenant",
+  "user_id": "user-001",
+  "session_id": "sess-2026-04-27-001",
+  "project_id": "proj-landing-perfil",
+  "mode": "normal",
+  "turn": 0,
+  "started_at": "2026-04-27T00:00:00Z",
+  "updated_at": "2026-04-27T00:00:00Z",
+  "tokens_total_est": 0,
+  "time_elapsed_sec": 0,
+  "agents_used_total": 0,
+  "skills_used_total": [],
+  "active_agents": [],
+  "active_skills": [],
+  "queue_depth": 0,
+  "degraded_mode": false,
+  "mode_switches": [],
+  "last_summary": ""
+}

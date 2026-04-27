@@ -172,9 +172,18 @@ Tamaño objetivo para background video: &lt;5MB, 15–30 segundos de loop.
 - Fallback para mobile
 - Instrucciones de compresión con ffmpeg
 
+## Video programático con Remotion
+
+Para **generar videos con código** (motion graphics, demos animados, branded content):
+→ Activar `design-remotion` skill.
+
+Remotion permite crear MP4/GIF usando React components con `interpolate()` y `spring()`.
+Use cases que NO cubre design-video: exportar animaciones, data viz en video, branded templates.
+
 ## Notas
 
 - `autoPlay` solo funciona con `muted` en browsers modernos
 - `playsInline` obligatorio para iOS
 - Video background: preferir loops cortos (5–15s), sin audio
 - Alojar en CDN propio o Cloudflare Stream — YouTube/Vimeo tienen delay de carga
+- Video generado con código: usar `design-remotion` (Remotion)

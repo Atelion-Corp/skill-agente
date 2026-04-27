@@ -73,8 +73,13 @@ Basado en el análisis, tu proyecto encaja mejor en:
   ● PREMIUM    — luxury, scroll storytelling, alta estética
   ● CORPORATE  — empresa, B2B, autoridad, formal
   ● 3D         — Three.js / R3F / Spline
+  ● GRAFO      — red neuronal, conocimiento, Obsidian-style 3D
+  ● ANIME      — animaciones complejas, Anime.js, stagger, SVG morphing
+  ● SCROLL     — Lenis + GSAP, parallax, scroll physics (UIverse)
   ● IMÁGENES   — galería, portfolio, image-heavy
   ● VIDEO      — background video, player, scroll-driven
+  ● REMOTION   — video programático con código (MP4/GIF)
+  ● EDITOR     — rich text editor, WYSIWYG, TinyMCE/Tiptap
 
 ¿Confirmas [TIER DETECTADO] o prefieres otro?
 ```
@@ -85,17 +90,32 @@ Si el proyecto tiene código existente → activar `arch-validator`.
 Si es nuevo → recomendar el stack del tier:
 - Medio/Pro/Premium/Corporate/Eco: Next.js 15 + TailwindCSS + shadcn/ui
 - 3D: + @react-three/fiber + drei
+- Grafo: + react-force-graph-3d + d3-force-3d
+- Anime: + animejs
+- Scroll: + @studio-freight/lenis + gsap
 - Video: + react-player
+- Remotion: + remotion + @remotion/player
 - Imágenes: next/image + yet-another-react-lightbox
+- Editor: + @tiptap/react + @tiptap/starter-kit (o @tinymce/tinymce-react)
 
 ### 6. Etapa DISEÑO — activar skill correcto
 
-Activar `design-<tier>` con el contexto acumulado:
+Activar el skill correspondiente con el contexto acumulado:
 - brief del proyecto
 - design tokens del análisis
 - stack validado
 
-Seguir el workflow del skill de diseño elegido.
+| Tier | Skill |
+|------|-------|
+| eco/medio/pro/premium/corporate | `design-<tier>` |
+| 3d | `design-3d` |
+| grafo | `design-graph` |
+| anime | `design-anime` |
+| scroll | `design-uiverse` |
+| imágenes | `design-images` |
+| video | `design-video` |
+| remotion | `design-remotion` |
+| editor | `design-tinymce` |
 
 ### 7. Etapa SAVE — activar resultado-save
 

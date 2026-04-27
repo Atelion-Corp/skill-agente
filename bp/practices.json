@@ -1,0 +1,225 @@
+{
+  "v": 1,
+  "areas": {
+    "D": "Diseño",
+    "M": "Marketing",
+    "V": "Dev",
+    "A": "Auto",
+    "T": "Testing",
+    "S": "Skills",
+    "DA": "Datos",
+    "F": "Finanzas",
+    "*": "Global"
+  },
+  "sub_areas": {
+    "D": ["UI","3D","ANI","GAL","VID","GRF","SCR","RMT","EDT"],
+    "M": ["CPY","SEO","CRO","GRW","STR"],
+    "V": ["API","DB","AUTH","DOCK","CI"],
+    "C": ["CTX","ARCH","PERF"]
+  },
+  "practices": [
+    {
+      "id": "BP-D-001",
+      "a": "D", "sa": "UI",
+      "rule": "4 design decisions before code: purpose/tone/constraints/differentiator",
+      "why": "prevents generic AI aesthetics; intentionality drives quality",
+      "tags": ["UI","DESIGN"]
+    },
+    {
+      "id": "BP-D-002",
+      "a": "D", "sa": "UI",
+      "rule": "no Inter/Roboto/Arial — pick distinctive display font",
+      "why": "avoid generic look; typography is foundation of personality",
+      "tags": ["UI","TYPO"]
+    },
+    {
+      "id": "BP-D-003",
+      "a": "D", "sa": "UI",
+      "rule": "color dominance: 60-70% primary + 1-2 sharp accents",
+      "why": "cohesion > equal distribution; timid palettes look generic",
+      "tags": ["UI","COLOR"]
+    },
+    {
+      "id": "BP-D-004",
+      "a": "D", "sa": "ANI",
+      "rule": "animate only transform+opacity (GPU), avoid width/height/top/left",
+      "why": "layout thrash causes jank; GPU properties skip layout step",
+      "tags": ["ANI","PERF"]
+    },
+    {
+      "id": "BP-D-005",
+      "a": "D", "sa": "ANI",
+      "rule": "use stagger(80-120ms) for card lists, not simultaneous entry",
+      "why": "UX rhythm; simultaneous = jarring, stagger = natural flow",
+      "tags": ["ANI","UX"]
+    },
+    {
+      "id": "BP-D-006",
+      "a": "D", "sa": "ANI",
+      "rule": "page load timeline: nav(500ms) → hero-title(800ms) → sub(-400ms) → cta(-300ms)",
+      "why": "visual hierarchy through timing; reader follows the sequence",
+      "tags": ["ANI","UX","PERF"]
+    },
+    {
+      "id": "BP-D-007",
+      "a": "D", "sa": "GRF",
+      "rule": "react-force-graph-3d for >200 nodes (WebGL); react-force-graph-2d for ≤200",
+      "why": "WebGL handles scale; SVG/DOM breaks at 500+ nodes",
+      "tags": ["GRF","PERF"]
+    },
+    {
+      "id": "BP-D-008",
+      "a": "D", "sa": "GRF",
+      "rule": "node size = sqrt(backlinks)*2, min 2",
+      "why": "proportional visual hierarchy; sqrt prevents gigantic hubs",
+      "tags": ["GRF","UX"]
+    },
+    {
+      "id": "BP-D-009",
+      "a": "D", "sa": "GRF",
+      "rule": "d3Force charge=-120, link distance=60, center=0.05 for Obsidian feel",
+      "why": "Obsidian defaults; balanced between tight cluster and spread",
+      "tags": ["GRF","UX"]
+    },
+    {
+      "id": "BP-D-010",
+      "a": "D", "sa": "SCR",
+      "rule": "Lenis duration=1.2 + expo easing for natural momentum",
+      "why": "matches physical expectation of paper/inertia",
+      "tags": ["SCR","UX"]
+    },
+    {
+      "id": "BP-D-011",
+      "a": "D", "sa": "SCR",
+      "rule": "passive:true on all scroll event listeners",
+      "why": "non-passive blocks compositor thread; causes scroll jank on mobile",
+      "tags": ["SCR","PERF"]
+    },
+    {
+      "id": "BP-D-012",
+      "a": "D", "sa": "3D",
+      "rule": "use R3F not raw Three.js for React projects",
+      "why": "declarative API = less boilerplate; auto cleanup on unmount",
+      "tags": ["3D","DX"]
+    },
+    {
+      "id": "BP-D-013",
+      "a": "D", "sa": "3D",
+      "rule": "dpr=[1,1.5] in Canvas; frameloop=demand for static scenes",
+      "why": "limits battery/GPU on mobile; demand loop only renders when needed",
+      "tags": ["3D","PERF"]
+    },
+    {
+      "id": "BP-D-014",
+      "a": "D", "sa": "RMT",
+      "rule": "interpolate with extrapolateRight:clamp to prevent overshoot",
+      "why": "unclamped interpolation continues past keyframe range",
+      "tags": ["RMT","ANI"]
+    },
+    {
+      "id": "BP-D-015",
+      "a": "D", "sa": "EDT",
+      "rule": "dynamic import with ssr:false for all editor components in Next.js",
+      "why": "editors use browser APIs (window/document) unavailable in SSR",
+      "tags": ["EDT","DX"]
+    },
+    {
+      "id": "BP-D-016",
+      "a": "D", "sa": "UI",
+      "rule": "Seesaw style: visual-first (60-80% viewport), max 3 colors, no UI framework",
+      "why": "editorial/portfolio sites need custom, not component-kit look",
+      "tags": ["UI","SEESAW"]
+    },
+    {
+      "id": "BP-M-001",
+      "a": "M", "sa": "CPY",
+      "rule": "benefits not features; clarity over cleverness",
+      "why": "reader decides in 5 sec; features require understanding the product",
+      "tags": ["CPY","COPY"]
+    },
+    {
+      "id": "BP-M-002",
+      "a": "M", "sa": "CPY",
+      "rule": "CTA = [Action verb] + [What they get] + [Optional qualifier]",
+      "why": "proven conversion pattern; avoids vague CTAs",
+      "tags": ["CPY","CTA"]
+    },
+    {
+      "id": "BP-M-003",
+      "a": "M", "sa": "CRO",
+      "rule": "ask for referral AFTER aha moment, not at signup",
+      "why": "advocacy requires experienced value; early ask feels transactional",
+      "tags": ["CRO","GRW"]
+    },
+    {
+      "id": "BP-M-004",
+      "a": "M", "sa": "SEO",
+      "rule": "GEO: answer in H2/H3 as direct questions for AI citation",
+      "why": "Perplexity/ChatGPT cite direct Q&A format more than prose",
+      "tags": ["SEO","GEO"]
+    },
+    {
+      "id": "BP-M-005",
+      "a": "M", "sa": "GRW",
+      "rule": "double-sided referral incentive 2-3x better than single-sided",
+      "why": "both parties motivated; single-sided = free rider problem",
+      "tags": ["GRW","REF"]
+    },
+    {
+      "id": "BP-M-006",
+      "a": "M", "sa": "CRO",
+      "rule": "social login reduces signup friction 40-60%",
+      "why": "email+password = 2-4 steps; OAuth = 1 click",
+      "tags": ["CRO","UX"]
+    },
+    {
+      "id": "BP-M-007",
+      "a": "M", "sa": "SEO",
+      "rule": "LCP < 2.5s is hard SEO ranking factor",
+      "why": "Google Core Web Vitals directly impact ranking position",
+      "tags": ["SEO","PERF"]
+    },
+    {
+      "id": "BP-C-001",
+      "a": "*", "sa": "*",
+      "rule": "effective context = 60-70% of nominal window",
+      "why": "degradation starts earlier; 200K model degrades at 120-140K",
+      "tags": ["CTX","PERF","ARCH"]
+    },
+    {
+      "id": "BP-C-002",
+      "a": "*", "sa": "*",
+      "rule": "critical instructions at start/end, never middle",
+      "why": "start/end=85-95% recall; middle=76-82% (lost-in-middle effect)",
+      "tags": ["CTX","ARCH"]
+    },
+    {
+      "id": "BP-C-003",
+      "a": "*", "sa": "*",
+      "rule": "supervisor costs ~15x single-agent; max 5 workers before bottleneck",
+      "why": "token usage explains 80% of performance variance; justify each level",
+      "tags": ["CTX","ARCH","PERF"]
+    },
+    {
+      "id": "BP-C-004",
+      "a": "*", "sa": "*",
+      "rule": "compress context at 70-80% utilization threshold",
+      "why": "avoid hard cutoff; proactive compaction better than reactive",
+      "tags": ["CTX","PERF"]
+    },
+    {
+      "id": "BP-C-005",
+      "a": "*", "sa": "*",
+      "rule": "10 tools = 5K-8K tokens overhead pre-message",
+      "why": "tool serialization expands 2-3x; limit tools per agent role",
+      "tags": ["CTX","PERF"]
+    },
+    {
+      "id": "BP-C-006",
+      "a": "*", "sa": "*",
+      "rule": "use persistent file storage for state, not message-passing between agents",
+      "why": "telephone game: info degrades with each summarization hop",
+      "tags": ["CTX","ARCH"]
+    }
+  ]
+}

@@ -46,6 +46,48 @@ Mapear la referencia a un tier:
 | premium | Scroll storytelling, glassmorphism, partículas, video hero |
 | corporate | Estructura formal, colores corporativos, grids densos |
 | 3d | Three.js / R3F / Spline embeds, perspectiva, WebGL |
+| graph | Force-directed 3D, neuronas, conocimiento, Obsidian-like |
+| anime | Animaciones complejas, Anime.js, stagger, SVG morphing |
+| scroll | Lenis, GSAP scroll, parallax, scroll storytelling |
+| video | Video hero, scroll-driven video, Remotion |
+
+### Patrones Seesaw.website
+
+Seesaw es una galería curada de diseño de alta calidad. Si la referencia es de este estilo:
+
+```
+Señales Seesaw:
+  - Visual-first: imagen o ilustración domina el 60-80% del viewport
+  - Tipografía editorial: serif grande + sans-serif cuerpo
+  - Paleta reducida: máx 3 colores, mucho blanco/negro
+  - Grid asimétrico o irregular
+  - Animaciones de hover sofisticadas (reveal, clip-path, mask)
+  - Portfolio / branding / identidad visual
+
+Stack típico:
+  Next.js + CSS Modules o Tailwind (minimal config)
+  GSAP para hover reveals
+  next/image con object-fit: cover
+  Sin frameworks UI (shadcn/Radix raramente)
+```
+
+### Patrones UIverse.io
+
+UIverse es una librería de componentes CSS/Tailwind open-source. Si busca componentes específicos:
+
+```
+Componentes frecuentes:
+  - Scroll suave: Lenis + GSAP ScrollTrigger
+  - Cards con hover 3D: perspective + transform
+  - Botones con efectos: ripple, magnetic, fill
+  - Loaders: CSS animation puro
+  - Inputs con floating labels
+
+Stack típico:
+  CSS puro o Tailwind
+  Sin JS (componentes CSS only)
+  Cuando hay JS: GSAP o Motion
+```
 
 ### 4. Generar design tokens
 
