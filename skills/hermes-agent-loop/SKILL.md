@@ -89,6 +89,18 @@ Campos mínimos:
 - Registrar iteración y resultado.
 - Dejar siguiente hipótesis lista para próximo ciclo.
 
+## Automatización recomendada
+
+Ejecutar el loop con:
+
+```powershell
+pwsh -File scripts/hermes-autoupgrade.ps1 -ProjectId "skill_agente" -Goal "objetivo del ciclo" -Apply
+```
+
+Notas:
+- `-Apply` corre validación (`scripts/validate-plugin.ps1`) dentro del ciclo.
+- Sin `-Apply`, hace dry-run de planificación y registro.
+
 ## Salida esperada
 
 - `decision` (qué se mejoró)
@@ -101,4 +113,3 @@ Campos mínimos:
 - Claude/Codex: registrar en manifiestos del plugin.
 - OpenCode/otros: consumir `SKILL.md` directamente.
 - Mantener lenguaje de instrucciones agnóstico del runtime.
-

@@ -248,6 +248,27 @@
       "rule": "keep plugin manifests synchronized across runtimes (claude/codex/others) with automated validation",
       "why": "manifest drift causes runtime-specific failures and broken releases",
       "tags": ["ARCH","DX","PORTABILITY"]
+    },
+    {
+      "id": "BP-C-008",
+      "a": "*", "sa": "*",
+      "rule": "score external skills by maintenance, portability, specificity and safety before adoption",
+      "why": "reduces low-quality imports and keeps the skill pack stable over time",
+      "tags": ["ARCH","CTX","SAFETY"]
+    },
+    {
+      "id": "BP-C-009",
+      "a": "*", "sa": "*",
+      "rule": "run closed-loop auto-improvement in dry-run first, then apply only after passing validation",
+      "why": "prevents unstable changes from being promoted into the baseline",
+      "tags": ["ARCH","PERF","SAFETY"]
+    },
+    {
+      "id": "BP-D-020",
+      "a": "D", "sa": "UI",
+      "rule": "for Tailwind blocks, keep max 3 dependencies and test responsive+a11y before merge",
+      "why": "prevents UI bloat and avoids regressions in production layouts",
+      "tags": ["UI","PERF","UX"]
     }
   ]
 }
