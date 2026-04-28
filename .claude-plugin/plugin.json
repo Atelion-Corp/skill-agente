@@ -1,7 +1,7 @@
 {
   "name": "skill-agente",
   "description": "Skills para diseño web por tiers, UI hunting, validación de arquitectura, orquestación multiagente con modos dinámicos, monitoreo por input y operaciones de desarrollo Django+Next.js+Docker.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "author": {
     "name": "diego"
   },
@@ -48,6 +48,7 @@
     "./skills/dev-scaffold",
     "./skills/dev-seed",
     "./skills/dev-test",
+    "./skills/hermes-agent-loop",
     "./skills/mkt-base",
     "./skills/mkt-copy",
     "./skills/mkt-cro",

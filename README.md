@@ -25,7 +25,7 @@ Cada nivel pasa paquetes de contexto mínimo (≤500 tokens orchestrator→area,
 - Codex: `.codex-plugin/plugin.json`
 - OpenCode y otros agentes: carga directa de `skills/*/SKILL.md` + `AGENTS.md`
 
-## Skills disponibles (44 total)
+## Skills disponibles (45 total)
 
 ### Orquestación
 
@@ -46,6 +46,7 @@ Cada nivel pasa paquetes de contexto mínimo (≤500 tokens orchestrator→area,
 | `mkt-pipeline` | Marketing: brief → contexto → estrategia → contenido → SEO → CRO → growth |
 | `dev-pipeline` | Dev: scaffold → docker → migrate → test → seed |
 | `resultado-save` | Persistir outputs en `proyecto_resultado_skill/` |
+| `hermes-agent-loop` | Auto-mejora continua controlada (plan → run → review → learn → update) inspirada en Hermes Agent |
 
 ### Análisis
 
@@ -177,6 +178,7 @@ Incluye patrones de referencia de:
 - https://github.com/heygen-com/hyperframes
 - https://github.com/ras0q/obsidian-graph-banner
 - https://github.com/natefrisch01/Graph-Link-Types
+- https://github.com/NousResearch/hermes-agent
 
 ---
 

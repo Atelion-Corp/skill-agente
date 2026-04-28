@@ -1,7 +1,7 @@
 {
   "name": "skill-agente",
   "description": "Multi-agent skill pack for design, marketing, dev workflows, and orchestration.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "license": "MIT",
   "author": "Atelion Corp",
   "skills": [
@@ -31,6 +31,7 @@
     "./skills/dev-scaffold",
     "./skills/dev-seed",
     "./skills/dev-test",
+    "./skills/hermes-agent-loop",
     "./skills/mkt-base",
     "./skills/mkt-copy",
     "./skills/mkt-cro",
