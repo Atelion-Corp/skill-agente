@@ -6,7 +6,9 @@ license: MIT
 
 # design-graph — 3D Neuron Graph (Obsidian-style)
 
-Grafos interactivos 3D con conexiones tipo neuronas. Inspirado en el Graph View de Obsidian.
+Grafos interactivos 3D con conexiones tipo neuronas. Inspirado en Graph View de Obsidian y patrones de:
+- `ras0q/obsidian-graph-banner` (graph contextual en cabecera)
+- `natefrisch01/Graph-Link-Types` (tipado semántico de links)
 
 ## Cuándo usar
 
@@ -100,6 +102,18 @@ useEffect(() => {
 }, [])
 ```
 
+## Tipado semántico de enlaces (Graph-Link-Types pattern)
+
+Al construir los links, incluir `linkType` (ej: `related`, `depends_on`, `blocks`) y mapear color/label por tipo.
+
+```ts
+const LINK_COLORS: Record<string, string> = {
+  related: '#60a5fa',
+  depends_on: '#f59e0b',
+  blocks: '#ef4444'
+}
+```
+
 ## Nodos custom (glow neuronal)
 
 ```tsx
@@ -173,6 +187,10 @@ onNodeClick={(node) => setSelected(node as Node)}
   </div>
 )}
 ```
+
+## Banner contextual (obsidian-graph-banner pattern)
+
+Para documentación o dashboards, agregar mini-grafo en cabecera (2D o snapshot) y expandir a 3D al interactuar. Esto mejora orientación sin saturar la vista principal.
 
 ## Alternativa 2D (simple)
 

@@ -1,6 +1,6 @@
 # skill-agente
 
-Plugin de Claude Code con skills para diseño web, marketing, desarrollo, orquestación multi-agente y gestión de contexto.
+Plugin de skills multi-agente para Claude, Codex, OpenCode y runtimes compatibles con `SKILL.md`.
 
 ## Arquitectura multi-agente
 
@@ -18,6 +18,12 @@ super-orquestador  ← cerebro maestro, contexto mínimo
 Cada nivel pasa paquetes de contexto mínimo (≤500 tokens orchestrator→area, ≤200 area→sub-agente).
 
 ---
+
+## Compatibilidad de runtimes
+
+- Claude Code: `.claude-plugin/plugin.json`
+- Codex: `.codex-plugin/plugin.json`
+- OpenCode y otros agentes: carga directa de `skills/*/SKILL.md` + `AGENTS.md`
 
 ## Skills disponibles (44 total)
 
@@ -167,6 +173,11 @@ skill_agente/bp/
 
 Búsqueda rápida por área + tags. Cargada on-demand por los area orchestrators.
 
+Incluye patrones de referencia de:
+- https://github.com/heygen-com/hyperframes
+- https://github.com/ras0q/obsidian-graph-banner
+- https://github.com/natefrisch01/Graph-Link-Types
+
 ---
 
 ## Repositorio de resultados
@@ -188,7 +199,22 @@ proyecto_resultado_skill/
 
 ## Instalación
 
-En Claude Code: **Manage Plugins** → agregar este directorio como plugin local.
+### Claude Code
+- **Manage Plugins** → agregar este directorio como plugin local.
+
+### Codex
+- Cargar plugin desde `.codex-plugin/plugin.json`.
+
+### OpenCode / otros
+- Importar skills desde `skills/` y usar `AGENTS.md` como guía operacional.
+
+## Validación antes de subir
+
+```powershell
+pwsh -File scripts/validate-plugin.ps1
+```
+
+Si pasa, el repo está consistente para publicación.
 
 ---
 

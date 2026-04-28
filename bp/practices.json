@@ -82,6 +82,20 @@
       "tags": ["GRF","UX"]
     },
     {
+      "id": "BP-D-017",
+      "a": "D", "sa": "GRF",
+      "rule": "model links with semantic types (related/depends_on/blocks) and map each type to color/label",
+      "why": "typed edges increase graph readability and decision speed over unlabeled links",
+      "tags": ["GRF","UX","DATA"]
+    },
+    {
+      "id": "BP-D-018",
+      "a": "D", "sa": "GRF",
+      "rule": "use a contextual mini-graph banner in header plus full graph on demand",
+      "why": "progressive disclosure preserves context without overwhelming the primary layout",
+      "tags": ["GRF","UX","LAYOUT"]
+    },
+    {
       "id": "BP-D-010",
       "a": "D", "sa": "SCR",
       "rule": "Lenis duration=1.2 + expo easing for natural momentum",
@@ -129,6 +143,13 @@
       "rule": "Seesaw style: visual-first (60-80% viewport), max 3 colors, no UI framework",
       "why": "editorial/portfolio sites need custom, not component-kit look",
       "tags": ["UI","SEESAW"]
+    },
+    {
+      "id": "BP-D-019",
+      "a": "D", "sa": "VID",
+      "rule": "prefer HTML-first video composition workflows for agent generation and deterministic rendering",
+      "why": "agent-native HTML composition reduces prompt ambiguity and improves reproducibility",
+      "tags": ["VID","AI","DX"]
     },
     {
       "id": "BP-M-001",
@@ -220,6 +241,13 @@
       "rule": "use persistent file storage for state, not message-passing between agents",
       "why": "telephone game: info degrades with each summarization hop",
       "tags": ["CTX","ARCH"]
+    },
+    {
+      "id": "BP-C-007",
+      "a": "*", "sa": "*",
+      "rule": "keep plugin manifests synchronized across runtimes (claude/codex/others) with automated validation",
+      "why": "manifest drift causes runtime-specific failures and broken releases",
+      "tags": ["ARCH","DX","PORTABILITY"]
     }
   ]
 }

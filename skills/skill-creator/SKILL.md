@@ -1,12 +1,12 @@
 ---
 name: skill-creator
-description: Generador de nuevas SKILL.md para Claude Code plugins. Usar cuando el usuario quiere crear un nuevo skill personalizado para su plugin.
+description: Generador de nuevas SKILL.md para plugins multi-runtime (Claude, Codex, OpenCode y compatibles). Usar cuando el usuario quiere crear un nuevo skill personalizado para su plugin.
 license: MIT
 ---
 
 # skill-creator — Generador de Skills
 
-Guía interactiva para crear una nueva `SKILL.md` lista para Claude Code.
+Guía interactiva para crear una nueva `SKILL.md` lista para runtimes multi-agente.
 
 ## Cuándo usar
 
@@ -71,8 +71,12 @@ Mapear los pasos lógicos del skill. Cada paso debe ser accionable por Claude.
 ### 3. Generar SKILL.md
 Crear el archivo en `<plugin-destino>/skills/<nombre>/SKILL.md`.
 
-### 4. Actualizar plugin.json
-Agregar `"./skills/<nombre>"` al array `skills` en `.claude-plugin/plugin.json`.
+### 4. Actualizar manifiestos
+Agregar `"./skills/<nombre>"` al array `skills` en:
+- `.claude-plugin/plugin.json`
+- `.codex-plugin/plugin.json`
+
+Si existe otro runtime en el repo, mantener su manifiesto sincronizado.
 
 ### 5. Confirmar
 Mostrar resumen: nombre, trigger, workflow en 3 bullets, archivo creado.
@@ -80,6 +84,6 @@ Mostrar resumen: nombre, trigger, workflow en 3 bullets, archivo creado.
 ## Notas
 
 - El `name` en frontmatter debe coincidir con el directorio del skill
-- `description` es lo que Claude lee para decidir si activar el skill — ser específico
+- `description` es lo que los agentes usan para decidir activación — ser específico
 - Skills complejos: separar en fases claras con headers `###`
 - Skills simples: un único bloque de pasos numerados

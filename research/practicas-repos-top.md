@@ -6,6 +6,9 @@ Repos usados:
 - https://github.com/tldraw/tldraw
 - https://github.com/TanStack/query
 - https://github.com/vuetifyjs/vuetify
+- https://github.com/heygen-com/hyperframes
+- https://github.com/ras0q/obsidian-graph-banner
+- https://github.com/natefrisch01/Graph-Link-Types
 - https://www.repoverse.space/trending
 
 ## Practicas detectadas
@@ -50,6 +53,18 @@ Repos usados:
 10. Senales de tendencia para priorizar
 - `repoverse.space/trending` se usa como senal para detectar practicas emergentes y toolchains que ganan adopcion.
 - Regla para skills: revisar tendencias periodicamente y ajustar prompts/plantillas cada ciclo.
+
+11. Skill-pack multi-runtime y orientado a agentes
+- HyperFrames publica superficies de plugin para Claude/Codex/Cursor y skills reutilizables.
+- Regla para skills: mantener manifests separados por runtime y un set comun de skills versionado de forma consistente.
+
+12. Visualizacion progresiva de grafos
+- Obsidian Graph Banner prioriza contexto local (header) antes de la exploracion completa.
+- Regla para skills: usar "preview contextual + vista expandida" para UX de grafos densos.
+
+13. Semantica explicita de enlaces
+- Graph-Link-Types usa metadatos para tipar relaciones y mejorar interpretabilidad del grafo.
+- Regla para skills: introducir tipos de enlace y convenciones visuales por tipo en outputs de graph/knowledge-map.
 
 ## Checklist operativo para nuevos skills
 
