@@ -3,3 +3,11 @@
 *.tmp
 .DS_Store
 Thumbs.db
+
+# Sensitive operational artifacts
+proyecto_resultado_skill/proyectos/server_diagnostic/
+proyecto_resultado_skill/proyectos/server-atelion-project/
+proyecto_resultado_skill/proyectos/server-nurbit/
+**/ops-snapshot.json
+**/apps-validation-report.json
+**/secrets-inventory.csv

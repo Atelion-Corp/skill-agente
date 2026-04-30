@@ -33,7 +33,7 @@ docker compose exec backend python manage.py shell -c "
 from django.contrib.auth import get_user_model
 User = get_user_model()
 u = User.objects.get(email='admin@proyecto.com')
-u.set_password('admin123')
+u.set_password('<SET_SECURE_PASSWORD>')
 u.save()
 print('Password set')
 "
