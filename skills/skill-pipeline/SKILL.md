@@ -244,9 +244,9 @@ El pipeline no produce archivos directamente — orquesta los otros skills. Su o
 
 Aplicable a toda documentacion y cambios operativos:
 
-1. API base oficial: `/v1/`.
+1. API base oficial: `/api/`.
 - No usar ningun prefijo `/api`.
-- Si aparece una variante, debe corregirse a `/v1/`.
+- Si aparece una variante, debe corregirse a `/api/`.
 
 2. Puertos canonicos no se cambian sin RFC tecnico aprobado:
 - Frontend principal: `3000` (dev alterno documentado: `4000` solo cuando aplique por proyecto).
@@ -263,4 +263,5 @@ Aplicable a toda documentacion y cambios operativos:
 4. Enrutamiento HTTP/HTTPS:
 - No usar Nginx dentro de Docker para publicacion principal.
 - Usar Nginx del servidor (host) para redirigir dominios a puertos Docker internos.
+
 

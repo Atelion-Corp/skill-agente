@@ -102,7 +102,7 @@ class TestProyectoViewSet:
         ProyectoFactory(creado_por=user)
         ProyectoFactory()  # de otro usuario
 
-        response = authenticated_client.get('/v1/proyectos/')
+        response = authenticated_client.get('/api/proyectos/')
 
         assert response.status_code == 200
         assert len(response.data['results']) == 1
@@ -110,13 +110,13 @@ class TestProyectoViewSet:
     def test_create_project(self, authenticated_client):
         payload = {'nombre': 'Mi Proyecto', 'descripcion': 'Descripción'}
 
-        response = authenticated_client.post('/v1/proyectos/', payload)
+        response = authenticated_client.post('/api/proyectos/', payload)
 
         assert response.status_code == 201
         assert response.data['nombre'] == 'Mi Proyecto'
 
     def test_unauthenticated_returns_401(self, client):
-        response = client.get('/v1/proyectos/')
+        response = client.get('/api/proyectos/')
         assert response.status_code == 401
 ```
 
@@ -283,4 +283,5 @@ test-frontend:
 - `force_authenticate` es más rápido que simular login real en tests de API
 - Factories > fixtures fijas — más flexibles y maintainables
 - En Next.js: testar lógica y componentes, no implementación (getByRole > getByTestId)
+
 

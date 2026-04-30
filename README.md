@@ -13,8 +13,8 @@ Usuario -> super-orquestador -> (area-design / area-mkt / dev-pipeline) -> resul
 ```
 
 ## Normas Duras
-- API base oficial: `/v1/`.
-- Prohibido cualquier prefijo `/api`.
+- API base oficial: `/api/`.
+- Prohibido usar `/api/v1/` o cualquier versionado en la ruta base API.
 - Puertos canonicos no se alteran sin aprobacion tecnica.
 - Credenciales siempre enmascaradas en documentacion.
 
@@ -27,4 +27,5 @@ Usuario -> super-orquestador -> (area-design / area-mkt / dev-pipeline) -> resul
 ## Regla De Proxy
 - Nginx principal corre en el servidor (host), no dentro de Docker para publicacion principal.
 - El servidor redirige dominios a puertos Docker segun servicio.
+
 
