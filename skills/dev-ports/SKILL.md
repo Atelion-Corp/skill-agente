@@ -120,10 +120,10 @@ Acceder desde red local (otra PC en la misma WiFi):
 
 ```bash
 # Para el browser del cliente (Next.js side):
-NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+NEXT_PUBLIC_API_URL=http://localhost:8000/v1
 
 # Para el servidor Next.js dentro de Docker (SSR):
-API_URL=http://backend:8000/api/v1
+API_URL=http://backend:8000/v1
 
 # El nombre "backend" es el nombre del servicio en docker-compose.yml
 ```
@@ -209,7 +209,7 @@ print('Redis OK:', r.ping())
 "
 
 # Desde frontend, ¿puede llegar al backend?
-docker compose exec frontend wget -qO- http://backend:8000/api/v1/ | head -20
+docker compose exec frontend wget -qO- http://backend:8000/v1/ | head -20
 
 # Ver red interna de docker compose
 docker network inspect $(docker compose ps -q backend | head -1 | xargs docker inspect --format='{{range .NetworkSettings.Networks}}{{.NetworkID}}{{end}}') | python -m json.tool | grep -A5 "Containers"
@@ -243,3 +243,4 @@ gcloud compute firewall-rules create allow-8000 \
 - Dentro de Docker, los servicios se hablan por nombre de servicio, no `localhost`
 - En producción: NO exponer puertos de DB y Redis directamente — solo nginx/8080
 - `CORS_ALLOWED_ORIGINS` debe tener el origen EXACTO (con protocolo y puerto)
+

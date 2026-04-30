@@ -159,8 +159,8 @@ docker compose exec backend python manage.py createsuperuser
 docker compose exec frontend env | grep API
 
 # La variable debería ser:
-# NEXT_PUBLIC_API_URL=http://backend:8000/api/v1   ← dentro de docker
-# NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1 ← para el browser del host
+# NEXT_PUBLIC_API_URL=http://backend:8000/v1   ← dentro de docker
+# NEXT_PUBLIC_API_URL=http://localhost:8000/v1 ← para el browser del host
 ```
 
 ## Variables de entorno en Docker
@@ -196,3 +196,4 @@ docker system df
 - `docker compose` (v2) vs `docker-compose` (v1) — usar la versión sin guión en proyectos modernos
 - `--build` solo rebuilda si el Dockerfile o contexto cambió — para forzar usar `--no-cache`
 - Los logs de Next.js en dev muestran HMR events normales — ignorar ruido de `router`
+

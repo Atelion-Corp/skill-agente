@@ -156,7 +156,7 @@ class ProyectoViewSet(viewsets.ModelViewSet):
             activo=True
         ).select_related('creado_por')
 
-    # Acción custom: /api/v1/proyectos/{id}/archivar/
+    # Acción custom: /v1/proyectos/{id}/archivar/
     @action(detail=True, methods=['post'])
     def archivar(self, request, pk=None):
         proyecto = self.get_object()
@@ -279,7 +279,7 @@ export interface Proyecto {
 - [ ] `makemigrations` + `migrate` corridos
 - [ ] Registrado en `INSTALLED_APPS`
 - [ ] URLs incluidas en `config/api_urls.py`
-- [ ] Endpoint verificado: `GET /api/v1/proyectos/`
+- [ ] Endpoint verificado: `GET /v1/proyectos/`
 - [ ] Admin registrado
 - [ ] Tipos TypeScript actualizados
 - [ ] Test esqueleto creado en `tests/`
@@ -296,3 +296,4 @@ export interface Proyecto {
 - `read_only_fields` en serializer para campos que no debe editar el cliente
 - `get_queryset` filtrado por usuario — nunca exponer datos de otros usuarios
 - En Next.js: `async function getX()` en Server Component, hooks solo en Client Components
+

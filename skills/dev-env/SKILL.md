@@ -57,9 +57,9 @@ CACHE_URL=redis://redis:6379/1
 # NEXT.JS (FRONTEND)
 # =============================================================
 # URL que usa el BROWSER para llamar al backend
-NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+NEXT_PUBLIC_API_URL=http://localhost:8000/v1
 # URL que usa el servidor Next.js (SSR) para llamar al backend
-API_URL=http://backend:8000/api/v1
+API_URL=http://backend:8000/v1
 
 # =============================================================
 # EMAIL (OPCIONAL)
@@ -273,3 +273,4 @@ service-account.json
 - `NEXT_PUBLIC_*` se embebe en el bundle JS — no poner secrets ahí
 - En GCP Cloud Run: variables van en la config del servicio, no en `.env`
 - Separar `dev.py` y `prod.py` evita accidentes de configuración en deploy
+

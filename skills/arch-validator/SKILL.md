@@ -18,7 +18,7 @@ Basado en la arquitectura validada de **Atelion Projects** (`C:\Users\diego\Docu
 | Frontend | Next.js 15 + TypeScript + TailwindCSS + shadcn/ui (Radix) |
 | Auth | JWT (`access_token` + `refresh_token` en localStorage) |
 | Infra | Docker Compose — `docker-compose.yml` en raíz |
-| API | `/api/v1/` prefijo, DRF ViewSets, endpoints RESTful |
+| API | `/v1/` prefijo, DRF ViewSets, endpoints RESTful |
 
 ## Cuándo usar
 
@@ -97,3 +97,4 @@ Listar cada ❌ con acción correctiva específica.
 - WARN no bloquea desarrollo — es deuda técnica a resolver
 - FAIL puede causar problemas en producción — corregir antes de deploy
 - Si el proyecto usa stack diferente (FastAPI, Vue, etc.), validar principios (separación, env vars, Docker) en lugar de tecnologías exactas
+

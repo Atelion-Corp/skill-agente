@@ -171,7 +171,7 @@ services:
     env_file:
       - .env
     environment:
-      NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+      NEXT_PUBLIC_API_URL: http://localhost:8000/v1
     depends_on:
       - backend
 
@@ -219,7 +219,7 @@ POSTGRES_PASSWORD=CHANGE_THIS
 REDIS_URL=redis://redis:6379/0
 
 # Frontend
-NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+NEXT_PUBLIC_API_URL=http://localhost:8000/v1
 
 # Email (opcional)
 EMAIL_HOST=smtp.gmail.com
@@ -308,3 +308,4 @@ docker compose ps
 - Volumen para `node_modules` evita sobreescribir el módulo del contenedor con el del host
 - `depends_on: condition: service_healthy` asegura orden de arranque correcto
 - Para producción: cambiar `command` a gunicorn y usar multi-stage build en frontend
+
