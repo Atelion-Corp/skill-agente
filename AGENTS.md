@@ -1,26 +1,36 @@
-# Skill Agente
+# AGENTS.md
 
-Guía operativa multi-agente para usar este repo en Claude, Codex, OpenCode y agentes similares.
+## 1) Proposito del repositorio
+Este repositorio (skill_agente) forma parte del ecosistema interno de Atelion. Este contexto aplica para Claude Code, Codex y OpenCode.
 
-## Principios
-- Mantener cambios pequeños y verificables.
-- Leer primero `README.md` y luego el `SKILL.md` específico.
-- No asumir stack: confirmar desde contexto del usuario.
-- Preferir ejecución por fases: diagnóstico -> implementación -> validación.
+## 2) Estandar tecnico y de arquitectura
+La documentacion tecnica debe mantener lenguaje profesional interno, trazabilidad de cambios y secciones explicativas de codigo, procesos y flujos de datos.
 
-## Compatibilidad
-- Claude Code: usa `.claude-plugin/plugin.json`.
-- Codex: usa `.codex-plugin/plugin.json`.
-- OpenCode/u otros: consumir `skills/*/SKILL.md` directamente (fallback estándar).
+## 3) Normas duras de API y puertos
+La ruta base oficial es /api/.
+No se permite usar /api/v1/ ni otros versionados en la ruta base.
+No cambiar puertos canonicos sin aprobacion tecnica explicita y registro en documentacion.
 
-## Flujo recomendado
-1. Detectar objetivo y área (`D`, `M`, `V`, `S`, etc.).
-2. Cargar solo skills relevantes (evitar sobrecargar contexto).
-3. Ejecutar con criterios de éxito explícitos.
-4. Validar salida con checklist de calidad.
+## 4) Regla de despliegue y proxy
+Para produccion, usar Nginx principal en host/servidor y enrutar por dominio hacia puertos de contenedores.
+No duplicar Nginx dentro de cada proyecto para publicacion principal, salvo excepcion aprobada.
 
-## Checklist mínimo antes de cerrar
-- ¿Se cumplieron criterios funcionales?
-- ¿Hay instrucciones reproducibles?
-- ¿Se evitó acoplamiento a un único runtime?
-- ¿Se actualizaron docs/manifiestos si aplica?
+## 5) Seguridad de datos y credenciales
+Nunca exponer credenciales, tokens, secretos o llaves en codigo, docs, logs o ejemplos.
+Las URLs de servicio pueden documentarse cuando sea necesario para operacion.
+Usar placeholders para secretos (<SECRET>, <TOKEN>, <PASSWORD>).
+
+## 6) Estandar de documentacion
+Cada documento principal debe incluir:
+Resumen ejecutivo, stack visual, flujo de datos/procesos, guia paso a paso de despliegue, checklist operativo y seccion de seguridad.
+
+## 7) Convencion de naming de repos
+Repos desplegables en Colossus usan prefijo server-<producto>.
+Repos poc-* son pruebas temporales y, al validarse, deben migrar a un nuevo repo server-<proyecto>.
+
+## 8) Flujo de trabajo para agentes IA
+Antes de cambiar codigo o infraestructura, validar impacto en API, puertos, seguridad y despliegue.
+Registrar cambios relevantes en README/runbook/contexto para mantener continuidad operativa.
+
+## 9) Definicion de terminado
+Un cambio se considera completo cuando: implementacion aplicada, documentacion alineada, validacion basica ejecutada y normas duras respetadas.
