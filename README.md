@@ -1,6 +1,6 @@
 # skill-agente
 
-Plugin de skills multi-agente para Claude, Codex, OpenCode y runtimes compatibles con `SKILL.md`.
+Plugin de skills multi-agente para Claude, Codex y OpenClaw-first runtimes compatibles con `SKILL.md`.
 
 ## Arquitectura multi-agente
 
@@ -23,7 +23,18 @@ Cada nivel pasa paquetes de contexto mínimo (≤500 tokens orchestrator→area,
 
 - Claude Code: `.claude-plugin/plugin.json`
 - Codex: `.codex-plugin/plugin.json`
-- OpenCode y otros agentes: carga directa de `skills/*/SKILL.md` + `AGENTS.md`
+- OpenClaw: runtime principal usando `config/openclaw-runtime.json`
+- Otros agentes: carga directa de `skills/*/SKILL.md` + `AGENTS.md`
+
+## OpenClaw-first baseline (nuevo)
+
+- Runtime único: OpenClaw.
+- Contratos de skills: `contracts/skills-contracts.json`.
+- Allowlist SSH: `config/ssh-command-allowlist.txt`.
+- Política operativa: `docs/openclaw-first-implementation.md`.
+- Skills nuevas:
+  - `openclaw-runtime`
+  - `deploy-guardian`
 
 ## Skills disponibles (47 total)
 
@@ -221,6 +232,9 @@ proyecto_resultado_skill/
 ### OpenCode / otros
 - Importar skills desde `skills/` y usar `AGENTS.md` como guía operacional.
 
+### OpenClaw
+- Usar `config/openclaw-runtime.json` como perfil base del runtime.
+
 ## Validación antes de subir
 
 ```powershell
@@ -240,6 +254,28 @@ pwsh -File scripts/hermes-autoupgrade.ps1 -ProjectId "skill_agente" -Goal "mejor
 Salida persistente:
 - `proyecto_resultado_skill/proyectos/skill_agente/hermes-loop-state.json`
 - `proyecto_resultado_skill/proyectos/skill_agente/hermes-loop-log.md`
+
+## Diagnóstico SSH + snapshot visual (nuevo)
+
+1. Ejecutar diagnóstico no destructivo:
+
+```powershell
+pwsh -File scripts/server-diagnostic-ssh.ps1 -HostName "<server-ip-mask>" -UserName "<admin-user-mask>"
+```
+
+2. Renderizar snapshot HTML:
+
+```powershell
+pwsh -File scripts/render-server-snapshot.ps1 -DiagnosticTextFile "<ruta-del-txt-generado>"
+```
+
+## Hardening de acceso (nuevo)
+
+```powershell
+pwsh -File scripts/secure-access-hardening.ps1 -Alias "hermes-ops" -HostName "<server-ip-mask>" -UserName "<admin-user-mask>"
+```
+
+Genera una clave aleatoria local en `.txt` y configura alias `ssh hermes-ops`.
 
 ---
 
