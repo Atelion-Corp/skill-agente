@@ -1,21 +1,48 @@
 ---
 name: skill-pipeline
-description: Orquestador de etapas para proyectos de diseño web. Valida progreso por fase, consulta contexto acumulado, simplifica decisiones, y decide qué skill activar a continuación. Usar para guiar proyectos complejos de inicio a fin.
+description: Orquestador de etapas para proyectos de diseño y documentación técnica interna. Valida progreso por fase, aplica normativa de seguridad de credenciales y estandariza documentación profesional por secciones.
 license: MIT
 ---
 
 # skill-pipeline — Orquestador de Etapas
 
-Skill maestro que guía al usuario por las fases de un proyecto de diseño web. Valida que cada etapa esté completa antes de avanzar, consulta el contexto guardado en `proyecto_resultado_skill`, y decide qué skill del plugin activar.
+Skill maestro que guía al usuario por fases para diseño web y documentación interna. Valida que cada etapa esté completa antes de avanzar, consulta el contexto guardado en `proyecto_resultado_skill`, y decide qué skill activar.
+
+## Normativa obligatoria (siempre activa)
+
+1. Seguridad de credenciales:
+- Nunca exponer secretos reales en salidas, ejemplos, docs o commits.
+- Reemplazar datos sensibles con placeholders (`<api-key>`, `<token-mask>`, `<domain-mask>`, `<admin-user>`).
+- Prohibido publicar: passwords, API keys, JWTs, cookies, cadenas de conexión, private keys, IPs internas no enmascaradas.
+- Si el usuario comparte credenciales, resumir sin repetirlas textualmente.
+
+2. Estandar documental interno:
+- Toda documentación debe usar una plantilla estándar y profesional.
+- Separar claramente:
+  a) Resumen ejecutivo / explicativo de procesos.
+  b) Procedimientos operativos paso a paso.
+  c) Sección técnica de código/configuración/ejemplos.
+- Incluir alcance, responsabilidades, prerequisitos, riesgos, controles, rollback y checklist.
+
+3. Trazabilidad:
+- Cada documento debe indicar última actualización y responsable.
+- Toda norma nueva debe reflejarse en índice maestro y runbook correspondiente.
 
 ## Cuándo usar
 
 - "empieza un proyecto de diseño", "guíame por el proceso"
 - "valida mi etapa", "estoy en la fase X, qué sigue"
 - "simplifica — qué debo decidir ahora"
+- "monitorea la documentación", "estandariza docs", "aplica normativa interna"
 - Al inicio de cualquier proyecto que use los skills de diseño de este plugin
 
-## Etapas del pipeline
+## Modos del pipeline
+
+```
+[A. DISEÑO] [B. DOCUMENTACIÓN]
+```
+
+### A) Modo Diseño
 
 ```
 [1. BRIEF] → [2. ANÁLISIS] → [3. TIER] → [4. STACK] → [5. DISEÑO] → [6. SAVE]
@@ -30,7 +57,77 @@ Skill maestro que guía al usuario por las fases de un proyecto de diseño web. 
 | 5. DISEÑO | `design-<tier>` | componentes implementados |
 | 6. SAVE | `resultado-save` | todo guardado en `proyecto_resultado_skill` |
 
-## Workflow
+### B) Modo Documentación Interna
+
+```
+[1. ALCANCE] → [2. INVENTARIO] → [3. NORMA] → [4. ESTRUCTURA] → [5. REDACCIÓN] → [6. VALIDACIÓN] → [7. SAVE]
+```
+
+| Etapa | Objetivo | Entregable |
+|-------|----------|------------|
+| 1. ALCANCE | Definir qué repos/sistemas se documentan | `scope.md` |
+| 2. INVENTARIO | Levantar artefactos, servicios y procesos | `inventory.md` |
+| 3. NORMA | Aplicar política de credenciales y clasificación de datos | `security-policy.md` |
+| 4. ESTRUCTURA | Crear índice y plantilla estándar | `doc-template.md` + `README` actualizado |
+| 5. REDACCIÓN | Completar docs por dominio (ops, arquitectura, negocio, código) | archivos `*.md` |
+| 6. VALIDACIÓN | Revisar completitud, coherencia y redacción profesional | `quality-checklist.md` |
+| 7. SAVE | Persistir contexto y estado para retomabilidad | `pipeline-status.json` |
+
+## Workflow (Documento)
+
+### 0. Detectar modo
+
+Si el usuario menciona documentación, normas internas, manuales o gobernanza:
+- activar **Modo Documentación** automáticamente.
+
+### 1. Etapa ALCANCE
+
+Preguntar una sola cosa a la vez:
+1. "¿Qué repositorios y áreas debemos cubrir en esta iteración?"
+
+### 2. Etapa INVENTARIO
+
+Recolectar para cada repo:
+- propósito, stack, servicios, puertos, dependencias, estado de despliegue.
+- entorno (POC, dev, prod) y owner responsable.
+
+### 3. Etapa NORMA (seguridad)
+
+Aplicar controles obligatorios:
+- redacción de secretos en ejemplos.
+- bloqueo de contenidos sensibles.
+- evidencia de cumplimiento (checklist de sanitización).
+
+### 4. Etapa ESTRUCTURA (plantilla única)
+
+Toda documentación debe usar el orden:
+1. Resumen Ejecutivo
+2. Objetivo y Alcance
+3. Arquitectura / Contexto
+4. Procedimiento Paso a Paso
+5. Operación y Monitoreo
+6. Sección Técnica de Código / Configuración
+7. Seguridad y Cumplimiento
+8. Troubleshooting y Rollback
+9. Checklist de Validación
+10. Historial de Cambios
+
+### 5. Etapa REDACCIÓN
+
+Redactar con tono profesional interno:
+- lenguaje claro, operativo y auditable.
+- incluir tablas, convenciones y criterios de aceptación.
+- si falta información, usar texto genérico marcado como `(editar sección: <codigo>)`.
+
+### 6. Etapa VALIDACIÓN
+
+Validar:
+- completitud por plantilla.
+- consistencia con naming conventions.
+- ausencia de credenciales/secretos.
+- claridad de pasos y responsables.
+
+## Workflow (Diseño)
 
 ### 1. Detectar etapa actual
 
@@ -129,6 +226,8 @@ El usuario puede en cualquier momento:
 - "¿qué falta?" → listar etapas pendientes
 - "saltear a [etapa]" → avanzar sin validar (advertir qué se pierde)
 - "guardar y pausar" → activar resultado-save y dejar todo guardado para retomar
+- "audita credenciales" → correr revisión de sanitización documental
+- "estandariza docs" → reformatear documentos al template oficial
 
 ## Output
 
@@ -136,7 +235,25 @@ El pipeline no produce archivos directamente — orquesta los otros skills. Su o
 
 ## Notas
 
-- Hacer UNA pregunta a la vez en BRIEF — no bombardear con formulario
+- Hacer UNA pregunta a la vez en BRIEF/ALCANCE — no bombardear con formulario
 - "simplifica" = detectar la decisión bloqueante y presentarla en ≤3 opciones
 - Si el usuario ya tiene contexto claro, saltear preguntas ya respondidas
 - Pipeline status se guarda en `proyecto_resultado_skill/proyectos/<nombre>/pipeline-status.json`
+
+## Norma API y Puertos (Regla Dura)
+
+Aplicable a toda documentacion y cambios operativos:
+
+1. API base oficial: `/api/v1/`.
+- No usar `/api/vq/` ni variantes no aprobadas.
+- Si aparece una variante, debe corregirse a `/api/v1/`.
+
+2. Puertos canonicos no se cambian sin RFC tecnico aprobado:
+- Frontend principal: `3000` (dev alterno documentado: `4000` solo cuando aplique por proyecto).
+- Backend principal: `8000`.
+- Redis: `6379`.
+- PostgreSQL: `5432`.
+
+3. Toda documentacion debe reflejar los puertos reales del compose del proyecto.
+
+
