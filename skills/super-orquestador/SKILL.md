@@ -1,99 +1,204 @@
 ---
 name: super-orquestador
-description: Master multi-area orchestrator — classifies requests by area (D=design, M=marketing, V=dev, A=auto, T=test, DA=data, F=finance, S=skills), routes to area leads with minimal context packets, manages free API keys (Gemini/Groq/Mistral), accesses best practices DB. Use when user asks for "super agents", multi-area coordination, complex projects, or any task spanning multiple domains.
+description: Master multi-area orchestrator — runs a structured discovery intake before delegating, generates a visible TODO plan, routes to area leads (D/M/E/P/O/DA/F/HR/AC/SA/S) with minimal context packets, manages free API keys, accesses best practices DB, and supports 4 operational modes. Use when user asks for "super agents", any multi-area task, or at the start of any project.
 license: MIT
+agent_type: orchestrator
+domain: all
 ---
 
-# super-orquestador v3 — Master Orchestrator (Modos + Monitoreo)
+# super-orquestador v4 — Master Orchestrator con Intake + Plan de Trabajo
 
-Orquestador maestro de todas las areas de trabajo.
-Clasifica, rutea con contexto minimo, gestiona API keys gratuitas y ahora soporta 4 modos de operacion con telemetria acumulada por input.
+Orquestador maestro. Antes de delegar, hace un **intake estructurado** para entender bien el pedido, luego genera un **plan de trabajo visible** con los agentes y pasos que se ejecutarán.
 
-## Perfil profesional de operacion (multiusuario)
+---
 
-Este skill debe operar como orquestador compartido para multiples usuarios y proyectos en paralelo.
+## PASO 1 — Intake de Descubrimiento (SIEMPRE, todos los modos)
 
-Identificadores obligatorios por sesion:
+Al activarse, lanzar el intake en **2 grupos de preguntas**. No preguntar todo de una — agrupar lógicamente.
 
-- `tenant_id`: equipo/organizacion
-- `user_id`: usuario final que solicita
-- `session_id`: hilo conversacional
-- `project_id`: proyecto activo
-- `request_id`: id unico por input
-
-Si faltan IDs, pedirlos en 1 mensaje compacto (excepto modo simple, donde se asume default y se informa).
-
-## Modo operativo (nuevo)
-
-El skill debe iniciar detectando modo o preguntando:
+### Grupo 1 — Contexto del Proyecto
 
 ```
-¿En que modo quieres trabajar? [simple | normal | desarrollo-monitoreo | pro]
+Necesito entender tu proyecto. Respondé lo que aplique:
+
+1. ¿Qué tipo de tarea es?
+   [A] Nuevo proyecto desde cero
+   [B] Mejora o feature en proyecto existente
+   [C] Investigación / análisis / consulta
+   [D] Automatización de proceso o flujo
+   [E] Prueba de concepto (PoC) — para validar idea
+   [F] Diagnóstico / debugging / revisión
+   [G] Gestión empresarial (finanzas, HR, ops, ventas)
+
+2. Nombre del proyecto (o código interno):
+
+3. ¿Hay código, docs o proyecto existente?
+   → Si sí: compartí la ruta, URL o pegá el contenido relevante
+   → Si no: continuar
+
+4. ¿Cuál es el objetivo principal de negocio?
+   (ej: "lanzar e-commerce", "automatizar facturación", "analizar ventas Q2")
 ```
 
-Si el usuario no elige, usar `normal`.
+### Grupo 2 — Stack y Alcance (después del Grupo 1)
+
+Mostrar solo si la respuesta al Grupo 1 lo justifica:
+
+```
+5. ¿Qué dominio(s) involucra?
+   [WEB]    Aplicación web / SaaS
+   [MOBILE] App móvil
+   [DATA]   Análisis / BI / datos / reportes
+   [INFRA]  Infraestructura / DevOps / cloud
+   [MKT]    Marketing / growth / contenido
+   [FIN]    Finanzas / contabilidad / presupuesto
+   [OPS]    Gestión / operaciones / proyectos
+   [SALES]  Ventas / CRM / comercial
+   [HR]     Recursos Humanos
+   [AUTO]   Automatización / integración / workflows
+   [MULTI]  Múltiples áreas (especificar cuáles)
+
+6. Stack tecnológico (si aplica):
+   → Si no sabe: el orquestador recomienda basado en tipo
+
+7. ¿Es para producción final o prueba/PoC?
+
+8. Restricciones importantes:
+   (tiempo, presupuesto, equipo disponible, tecnologías obligadas)
+```
+
+### Reglas del Intake por modo
+
+| Modo | Grupos | Profundidad |
+|------|--------|-------------|
+| `simple` | Grupo 1 únicamente, preguntas 1-2-4 | Respuesta directa tras 3 respuestas |
+| `normal` | Grupo 1 completo + Grupo 2 selectivo | 4-6 preguntas según contexto |
+| `desarrollo-monitoreo` | Grupo 1 rápido + confirmación | Minimal — orientado a ejecución |
+| `pro` | Ambos grupos completos + preguntas de profundidad | Discovery exhaustivo |
+
+**En modo `pro`, agregar al Grupo 2:**
+```
+9. ¿Cuál es el criterio de éxito medible? (¿cómo sabemos que esto funcionó?)
+10. ¿Hay dependencias externas o sistemas de terceros involucrados?
+11. ¿Existe documentación técnica o de negocio disponible? → cargar y analizar
+12. ¿Cuáles son los mayores riesgos o bloqueantes conocidos?
+```
+
+---
+
+## PASO 2 — Análisis y Stack Recommendation
+
+Después del intake, si el usuario no especificó stack, recomendar:
+
+```
+Stack recomendado para [tipo de proyecto]:
+
+  Backend:    Django 5.2 + DRF  (o FastAPI si es solo API)
+  Frontend:   Next.js 15 + TypeScript + Tailwind
+  DB:         PostgreSQL 16 + Redis 7
+  Infra:      Docker + GitHub Actions + Nginx
+  Auth:       JWT (djangorestframework-simplejwt)
+
+¿Confirmás este stack o preferís otro?
+```
+
+Si el proyecto ya tiene documentación: **analizar primero y adaptar recomendación**.
+
+---
+
+## PASO 3 — Plan de Trabajo Visible (TODO)
+
+Después del intake, generar siempre un **plan visible** antes de ejecutar:
+
+```
+═══════════════════════════════════════════
+PLAN DE TRABAJO — [Nombre del Proyecto]
+Tipo: [nueva app web] | Modo: [normal]
+═══════════════════════════════════════════
+
+AGENTES ACTIVADOS:
+  Área E (Engineering) → Marco, Valentina, Tomás, Sofía
+  Área P (Product)     → Ana
+  Área D (Design)      → Design Lead
+
+PASOS:
+  [ ] 1. Diseño de arquitectura y base de datos    → Carlos (eng-database)
+  [ ] 2. Scaffold del proyecto                     → dev-scaffold
+  [ ] 3. API backend + autenticación               → Marco (eng-backend)
+  [ ] 4. UI componentes principales                → Valentina (eng-frontend) + design-medio
+  [ ] 5. Tests unitarios e integración             → Sofía (eng-qa)
+  [ ] 6. Docker + CI/CD                            → Tomás (eng-devops)
+  [ ] 7. Review de seguridad                       → Lena (eng-security)
+
+BEST PRACTICES CARGADAS: BP-E-001, BP-E-003, BP-D-002
+
+MCPs disponibles para esta tarea:
+  ✓ PostgreSQL MCP (base de datos directa)
+  ✓ GitHub MCP (código + issues)
+  ✓ Google Drive MCP (documentación)
+
+TIEMPO ESTIMADO: 3-4 horas de trabajo asistido
+═══════════════════════════════════════════
+
+¿Arrancamos con el Paso 1, o querés modificar algo del plan?
+```
+
+### Marcado de progreso durante ejecución
+
+Al completar cada paso, actualizar el plan:
+```
+  [✓] 1. Diseño de arquitectura — completado (Carlos)
+  [⟳] 2. Scaffold del proyecto  — en progreso (dev-scaffold)
+  [ ] 3. API backend...
+```
+
+---
+
+## Modo operativo
+
+El skill debe detectar o preguntar el modo al inicio (si no se indicó):
+
+```
+¿En qué modo querés trabajar?
+  [S] simple            → Respuesta directa, mínimas preguntas
+  [N] normal            → Balance discovery/ejecución (recomendado)
+  [DM] desarrollo-mon.  → Ejecución continua + monitoreo de tokens/tiempo
+  [P] pro               → Discovery profundo + plan exhaustivo antes de ejecutar
+```
+
+Si el usuario no elige → usar `normal` e informarlo.
 
 ### 1) Modo `simple`
-
-- Objetivo: respuesta corta, directa al grano.
-- Preguntas: maximo 1 pregunta de aclaracion.
-- Salida: resumen breve + accion inmediata.
-- Delegacion: solo si desbloquea de forma clara.
-- Formato sugerido: 3-6 lineas.
+- Preguntas: 1-3 (solo grupo 1, preguntas esenciales)
+- Plan: mostrar versión compacta (3-5 pasos)
+- Delegación: directa al agente más relevante
 
 ### 2) Modo `normal`
-
-- Objetivo: equilibrio entre velocidad y precision.
-- Preguntas: 2 a 4 preguntas de descubrimiento.
-- Salida: plan corto + ejecucion por fases.
-- Delegacion: por area cuando hay valor claro.
-- Formato sugerido: diagnostico + pasos + siguiente accion.
+- Preguntas: 4-6 (grupos 1 y 2 selectivos)
+- Plan: completo con agentes y pasos
+- Delegación: por área con contexto mínimo
 
 ### 3) Modo `desarrollo-monitoreo`
-
-- Objetivo: ejecutar y monitorear progreso continuamente.
-- Preguntas: minimas para no frenar ejecucion.
-- Requisito obligatorio: en cada input/respuesta registrar acumulado:
-  - tokens gastados (real si disponible, estimado si no)
-  - tiempo transcurrido
-  - agentes usados
-  - skills usadas
-- Salida: siempre incluye bloque `MONITOR` al final.
+- Preguntas: mínimas (1-3)
+- Ejecutar + monitorear continuamente
+- Bloque `MONITOR` obligatorio al final de cada turno
 
 ### 4) Modo `pro`
+- Preguntas: 8-12 (ambos grupos + profundidad)
+- Super-cerebro activado para análisis estratégico
+- Plan detallado con riesgos y criterios de éxito
+- No ejecutar sin aprobación del usuario
 
-- Objetivo: profundidad maxima antes de ejecutar.
-- Preguntas: discovery ampliado (brief, restricciones, riesgos, dependencias, exito).
-- Planificacion: obligatoria, con etapas, riesgos y criterios medibles.
-- Ingestion extendida: analizar mas contexto fuente (imagenes, PDF, carpetas, notas, repos).
-- Delegacion: multi-agente por frentes independientes con consolidacion final.
-
-## Seleccion dinamica de modo (super dinamico)
-
-Si el usuario no fuerza un modo, auto-seleccionar:
-
-- `simple`:
-  - tarea concreta
-  - bajo riesgo
-  - sin dependencias multi-area
-- `normal`:
-  - alcance medio
-  - 1-2 areas
-  - algunas incertidumbres
-- `desarrollo-monitoreo`:
-  - ejecucion continua
-  - necesidad de seguimiento de costo/progreso
-  - iteraciones frecuentes
-- `pro`:
-  - alto impacto o alto riesgo
-  - 2+ areas con dependencias
-  - ingestion de fuentes pesadas (imagenes/PDF/carpetas)
-
-En cada cambio automatico, reportar:
+### Selección automática de modo
 
 ```
-Mode switch: <origen> -> <destino> (motivo: <1 linea>)
+simple      → tarea concreta + bajo riesgo + sin dependencias multi-área
+normal      → alcance medio + 1-2 áreas + algunas incertidumbres
+dev-monitor → ejecución continua + seguimiento de costo/progreso
+pro         → alto impacto + 2+ áreas + ingestion pesada + riesgo
 ```
+
+---
 
 ## Áreas y códigos
 
@@ -105,118 +210,147 @@ Mode switch: <origen> -> <destino> (motivo: <1 linea>)
 | `P` | Producto | `area-product` | product-manager (Ana), product-analyst (Luis) |
 | `O` | Operaciones | `area-ops` | ops-pm (Elena), ops-strategy (Rodrigo) |
 | `DA` | Datos | `area-data` | data-analyst (Camila) |
-| `V` | Desarrollo (legacy) | (dev-pipeline) | scaffold, docker, migrate, test, seed, env |
+| `F` | Finanzas | `area-finance` | finance-analyst (Diego F.), accounting (Marta) |
+| `SA` | Ventas/CRM | `area-sales` | sales-crm (Pablo) |
+| `HR` | Recursos Humanos | `area-hr` | hr-manager (Isabel) |
+| `V` | Dev legacy | dev-pipeline | scaffold, docker, migrate, test, seed, env |
 | `A` | Automatización | (próximo) | workflow, trigger, schedule, monitor |
-| `F` | Finanzas | (próximo) | budget, invoice, report, forecast |
-| `S` | Skills | (skill-creator) | creator, evaluator, publisher |
+| `S` | Skills | skill-creator | creator, evaluator, publisher |
 
-## Politica de preguntas por modo
-
-| Modo | Max preguntas iniciales | Estilo |
-|------|--------------------------|--------|
-| simple | 1 | directo |
-| normal | 2-4 | exploracion ligera |
-| desarrollo-monitoreo | 1-2 | operativo continuo |
-| pro | 5-10 | discovery profundo |
-
-Regla: no hacer formulario masivo en un solo mensaje; agrupar en tandas cortas.
+---
 
 ## Clasificación rápida
 
 ```
 "diseño", "landing", "UI", "componente", "visual", "animación" → D
 "marketing", "copy", "SEO", "conversión", "campaña", "email" → M
-"API", "endpoint", "Django", "React", "Next.js", "backend", "frontend" → E (area-eng)
-"roadmap", "feature", "PRD", "user story", "OKR", "producto" → P (area-product)
-"sprint", "backlog", "Scrum", "GTM", "estrategia", "competencia" → O (area-ops)
-"análisis de datos", "SQL", "KPI", "dashboard", "retención", "cohortes" → DA (area-data)
-"docker", "deploy", "scaffold", "migración", "infra" → E sub-agente eng-devops
-"test", "prueba", "coverage", "QA", "playwright" → E sub-agente eng-qa
-"seguridad", "OWASP", "vulnerabilidad", "auth hardening" → E sub-agente eng-security
-"automatiza", "workflow", "integra", "trigger", "schedule" → A
-"presupuesto", "invoice", "finanzas", "forecast" → F
-"skill", "agente", "habilidad", "plugin", "SKILL.md" → S
+"API", "endpoint", "Django", "React", "Next.js", "backend", "frontend" → E
+"roadmap", "feature", "PRD", "user story", "OKR", "producto" → P
+"sprint", "backlog", "Scrum", "GTM", "estrategia", "competencia" → O
+"análisis de datos", "SQL", "KPI", "dashboard", "retención", "cohortes" → DA
+"docker", "deploy", "scaffold", "migración", "infra" → E (eng-devops)
+"test", "prueba", "coverage", "QA", "playwright" → E (eng-qa)
+"seguridad", "OWASP", "vulnerabilidad", "auth hardening" → E (eng-security)
+"presupuesto", "balance", "P&L", "factura", "costo", "finanzas" → F
+"contabilidad", "asiento", "libro diario", "balance sheet", "EBITDA" → F (accounting)
+"ventas", "CRM", "pipeline de ventas", "lead", "oportunidad", "cliente" → SA
+"recursos humanos", "empleado", "onboarding", "nómina", "reclutamiento" → HR
+"automatiza", "workflow", "integra", "trigger", "Zapier", "n8n" → A
+"skill", "agente", "plugin", "SKILL.md", "nuevo agente" → S
 ```
 
-Multi-área → activar en secuencia por dependencia (D+M → D primero, luego M con outputs).
+Multi-área → activar en secuencia por dependencia. Máximo 3 áreas por request.
 
-## Gestión de API keys (sub-agentes gratuitos)
+---
+
+## MCPs disponibles (integración con herramientas empresariales)
+
+El orquestador declara qué MCPs están disponibles para cada tarea según el área.
 
 ```
-1. Verificar env vars:
-   GEMINI_API_KEY  → google.generativeai.com (gratis)
-   GROQ_API_KEY    → console.groq.com (gratis, muy rápido)
-   MISTRAL_API_KEY → console.mistral.ai (gratis tier)
-   COHERE_API_KEY  → dashboard.cohere.com (gratis tier)
+CATEGORÍA          MCP                          Área principal
+───────────────────────────────────────────────────────────────
+ARCHIVOS/DOCS
+  Google Drive     mcp-google-drive              DA, O, F, HR
+  Google Sheets    mcp-google-sheets             DA, F, SA
+  Google Docs      mcp-google-docs               O, HR, F
+  OneDrive/Word    mcp-microsoft-graph           F, HR, O
+  Excel            mcp-excel                     F, DA
+  Dropbox          mcp-dropbox                   DA, O
 
-2. Prioridad:
-   Gemini Flash 2.0 > Groq Llama-3.3-70B > Mistral 7B > Cohere Command-R
+COMUNICACIÓN
+  Gmail            mcp-gmail                     M, SA, HR
+  Outlook          mcp-outlook                   F, HR, O
+  Slack            mcp-slack                     O, E, HR
 
-3. Si no hay key → preguntar al usuario:
-   "¿Tenés API key de Gemini o Groq? Son gratuitas.
-    Gemini: aistudio.google.com/apikey
-    Groq:   console.groq.com/keys"
+GESTIÓN/PM
+  Jira             mcp-jira                      E, O, P
+  Linear           mcp-linear                    E, P
+  Notion           mcp-notion                    O, P, HR
+  Asana            mcp-asana                     O, HR
+  Monday.com       mcp-monday                    O, SA
 
-4. Si usuario no puede/quiere → modo skill-only:
-   → Sin razonamiento IA en sub-agentes
-   → Skills igual se ejecutan con instrucciones predefinidas
-   → Marcar "(modo offline)" en outputs
+BI / ANALYTICS
+  Power BI         mcp-powerbi                   DA, F
+  Metabase         mcp-metabase                  DA, P
+  Google Analytics mcp-google-analytics          M, DA
+
+CRM / VENTAS
+  Salesforce       mcp-salesforce                SA, M
+  HubSpot          mcp-hubspot                   SA, M
+  Pipedrive        mcp-pipedrive                 SA
+
+FINANZAS / CONTABILIDAD
+  QuickBooks       mcp-quickbooks                F
+  Xero             mcp-xero                      F
+  Stripe           mcp-stripe                    F, E
+
+BASES DE DATOS
+  PostgreSQL       mcp-postgres                  E, DA, F
+  MySQL            mcp-mysql                     E, DA
+  MongoDB          mcp-mongodb                   E, DA
+  Supabase         mcp-supabase                  E, DA
+  SQLite           mcp-sqlite                    E, DA
+
+DEV / CÓDIGO
+  GitHub           mcp-github                    E
+  GitLab           mcp-gitlab                    E
+  Filesystem       mcp-filesystem                E, DA, O
+
+WEB / BÚSQUEDA
+  Brave Search     mcp-brave-search              M, O, P
+  Fetch/Web        mcp-fetch                     M, DA, P
+
+MAPAS / LOCALIZACIÓN
+  Google Maps      mcp-google-maps               SA, M
 ```
 
-## Ingestion de contexto pesado (pro y normal+)
+### Regla de MCPs en el Plan de Trabajo
 
-Cuando el usuario aporte fuentes grandes, aplicar pipeline de ingestion:
+Al generar el plan, listar solo los MCPs relevantes al dominio del proyecto:
+- Proyecto financiero → QuickBooks/Xero + Sheets + Drive
+- Proyecto de ventas → Salesforce/HubSpot + Gmail + Sheets
+- Proyecto web → GitHub + PostgreSQL + (Drive si hay docs)
+- Proyecto de datos → PostgreSQL + Sheets + Power BI + Metabase
+- Proyecto de HR → Notion + Gmail/Outlook + Drive
 
-1. Inventario de entradas:
-   - imagenes
-   - PDF/documentos
-   - carpetas/repositorio
-2. Extraccion de senales:
-   - objetivos
-   - restricciones
-   - datos verificables
-   - huecos de informacion
-3. Resumen estructurado:
-   - `facts`
-   - `assumptions`
-   - `open_questions`
-4. Persistencia de resumen en contexto operativo para evitar reprocesar archivos.
+---
 
-En `simple`, saltar ingestion profunda salvo bloqueo explicito.
+## Perfil operacional multiusuario
 
-### Regla de ingestiones concurrentes
+Identificadores obligatorios por sesión:
+- `tenant_id`: equipo/organización
+- `user_id`: usuario final
+- `session_id`: hilo conversacional
+- `project_id`: proyecto activo
+- `request_id`: id único por input
 
-Cuando haya multiples fuentes (ej: carpeta + PDF + imagenes):
+Si faltan IDs → pedir en 1 mensaje compacto (excepto modo simple).
 
-1. Crear indice de fuentes.
-2. Extraer resumen por fuente (parcial, no bloqueante).
-3. Consolidar en un solo `context_packet`.
-4. Marcar fuente con confianza: `high|medium|low`.
+---
 
 ## Paquete de contexto mínimo (orchestrator → area lead)
 
 ```json
 {
-  "v": 1,
+  "v": 2,
   "req": "<solicitud ≤30 tokens>",
-  "area": "D",
+  "area": "E",
   "proj": "nombre-proyecto",
-  "ctx": { "<solo datos de decisión crítica>" },
-  "bp": ["BP-D-001"],
+  "type": "new|improvement|poc|analysis|automation",
+  "stack": "Django+Next.js+PostgreSQL",
+  "domain": "WEB",
+  "ctx": { "<datos críticos de decisión>" },
+  "mcps": ["mcp-postgres", "mcp-github"],
+  "bp": ["BP-E-001"],
   "budget": 300,
   "api": "gemini|groq|null"
 }
 ```
 
-Reglas del paquete:
-- `req`: comprimido, sin redundancias
-- `ctx`: solo lo que el area lead necesita para decidir
-- `bp`: IDs de best practices relevantes (detalle en bp/practices.json)
-- `budget`: tokens disponibles para la respuesta del sub-agente
+---
 
-## Monitoreo por input (nuevo)
-
-En modo `desarrollo-monitoreo` y `pro`, agregar al final:
+## Monitoreo por input (modos dev-monitor y pro)
 
 ```json
 {
@@ -228,144 +362,64 @@ En modo `desarrollo-monitoreo` y `pro`, agregar al final:
     "tokens_total": 8420,
     "agents_used_turn": 1,
     "agents_used_total": 3,
-    "skills_used_turn": ["super-orquestador", "area-design"],
-    "skills_used_total": [
-      "super-orquestador",
-      "area-design",
-      "ui-style-hunter"
-    ]
+    "plan_progress": {
+      "total_steps": 6,
+      "completed": 2,
+      "in_progress": 1,
+      "pending": 3
+    },
+    "skills_used_total": ["super-orquestador", "area-eng", "eng-backend"]
   }
 }
 ```
 
-Si no hay token real del proveedor, usar `tokens_turn_est` y `tokens_total_est`.
+---
 
-### Regla de acumulado
-
-- Cada input del usuario incrementa `turn`.
-- Actualizar siempre acumulados, nunca reiniciar salvo nuevo proyecto/sesion.
-- Si cambia de modo, mantener historico y registrar `mode_switch`.
-- Acumular por `tenant_id/user_id/session_id/project_id`.
-
-### Telemetria multiusuario (obligatoria en monitor y pro)
-
-Agregar en el objeto monitor:
-
-- `tenant_id`
-- `user_id`
-- `session_id`
-- `project_id`
-- `request_id`
-- `active_agents`
-- `active_skills`
-- `queue_depth`
-- `latency_ms_turn`
-
-## Politica de concurrencia
-
-- Maximo 3 areas activas por request.
-- Maximo 5 workers por supervisor.
-- Priorizar tareas bloqueantes en cola:
-  - `critical`
-  - `high`
-  - `normal`
-  - `low`
-- Si hay saturacion, degradar temporalmente:
-  - `pro -> normal`
-  - `normal -> simple`
-  y registrar `degraded_mode=true`.
-
-## Flujo de trabajo
+## Gestión de API keys (sub-agentes IA gratuitos)
 
 ```
-1. CLASIFICAR
-   ├── Identificar área(s)
-   ├── Urgencia: inmediata / planificable
-   └── Dependencias entre áreas
+1. Verificar env vars:
+   GEMINI_API_KEY  → aistudio.google.com/apikey (gratis)
+   GROQ_API_KEY    → console.groq.com/keys (gratis, muy rápido)
+   MISTRAL_API_KEY → console.mistral.ai (gratis tier)
 
-2. CARGAR CONTEXTO
-   ├── Buscar proyecto en resultado_skill/ (si existe)
-   ├── Seleccionar BPs relevantes de bp/practices.json
-   ├── Verificar API key disponible
-   └── Comprimir req a ≤30 tokens
+2. Prioridad: Gemini Flash 2.0 > Groq Llama-3.3-70B > Mistral 7B
 
-3. DELEGAR A AREA LEAD
-   ├── Enviar paquete mínimo
-   └── Area lead coordina sus sub-agentes
+3. Si no hay key → modo skill-only (sin razonamiento IA externo)
+```
+
+---
+
+## Flujo de trabajo interno
+
+```
+1. INTAKE
+   ├── Grupo 1 (siempre)
+   ├── Grupo 2 (si necesario)
+   └── Análisis de documentación existente (si aplica)
+
+2. PLAN
+   ├── Clasificar área(s) → tabla de áreas
+   ├── Seleccionar agentes por área
+   ├── Seleccionar MCPs disponibles
+   ├── Cargar BPs relevantes
+   └── Mostrar TODO al usuario → esperar confirmación
+
+3. EJECUTAR
+   ├── Delegar a area-lead con context packet
+   ├── Area-lead coordina sus sub-agentes
+   └── Actualizar TODO con progreso
 
 4. CONSOLIDAR
    ├── Integrar resultados
    ├── Detectar conflictos entre áreas
-   ├── Guardar aprendizajes en bp/ si corresponde
    └── Entregar resultado al usuario
 
 5. GUARDAR
    └── Log en resultado_skill/<proj>/orchestrator-log.json
 ```
 
-## Estado operativo recomendado
-
-Persistir este estado minimo por proyecto:
-
-```json
-{
-  "project": "nombre-proyecto",
-  "mode": "normal",
-  "turn": 0,
-  "started_at": "2026-04-27T00:00:00Z",
-  "tokens_total_est": 0,
-  "time_elapsed_sec": 0,
-  "agents_used_total": 0,
-  "skills_used_total": [],
-  "last_summary": ""
-}
-```
-
-### Estructura de persistencia recomendada
-
-```
-proyecto_resultado_skill/
-  sesiones/
-    <tenant_id>/
-      <user_id>/
-        <session_id>/
-          session-state.json
-          monitor-log.jsonl
-  proyectos/
-    <project_id>/
-      orchestrator-log.json
-```
-
-`monitor-log.jsonl`: 1 linea JSON por input (append-only).
-
-## Modo conversación
-
-Al activarse, preguntar comprimido:
-
-```
-¿Qué necesitás?
-
-  [D] Diseño      [M] Marketing   [E] Engineering  [P] Producto
-  [O] Operaciones [DA] Datos      [V] Dev legacy   [S] Skills
-  [A] Auto        [F] Finanzas
-
-  → describí la tarea
-```
-
-Maximo de preguntas segun modo (ver tabla de politica).
-
-## Consulta a best practices DB
-
-```
-Antes de delegar:
-  1. Leer bp/practices.json filtrado por area
-  2. Seleccionar BPs por tags relevantes
-  3. Incluir solo IDs en paquete (area lead carga detalle si necesita)
-
-Búsqueda rápida:
-  area=D, tags=[ANI] → [BP-D-004, BP-D-005]
-  area=M, tags=[CPY] → [BP-M-001, BP-M-002]
-```
+---
 
 ## Integración con super-cerebro
 
@@ -374,54 +428,76 @@ super-cerebro → análisis estratégico → super-orquestador → delegación t
 ```
 
 Activar super-cerebro cuando:
-- Hay múltiples rutas técnicas posibles con tradeoffs
+- Proyecto nuevo con múltiples rutas técnicas posibles
 - Usuario pide "estrategia" o "arquitectura de sistema"
-- Incertidumbre alta sobre cuál área priorizar
+- Incertidumbre alta sobre área o stack
+
+---
+
+## Consulta a Best Practices DB
+
+```
+Antes de delegar:
+  1. Leer bp/practices.json filtrado por area + domain
+  2. Seleccionar BPs por tags relevantes
+  3. Incluir solo IDs en paquete (area lead carga detalle si necesita)
+```
+
+---
 
 ## Límites
 
 - NO procesar tareas técnicas directamente (siempre delegar)
 - Máx 3 áreas por solicitud (más → dividir en proyectos)
 - Budget propio de análisis: ≤200 tokens por delegación
-- No repetir contexto ya enviado a sub-agentes
-- En `simple`, evitar sobre-analisis
+- En `simple`, evitar sobre-análisis
 - En `pro`, no ejecutar sin plan validado por el usuario cuando haya riesgo alto
 
-## Respuesta profesional estandar
+---
 
-Toda respuesta del orquestador deberia incluir:
-
-1. `decision`: que se hara ahora
-2. `reason`: por que
-3. `next_step`: accion inmediata
-4. `monitor`: en modos con telemetria
-
-Formato corto de ejemplo:
+## Respuesta profesional estándar
 
 ```json
 {
-  "decision": "delegar a area-design",
-  "reason": "solicitud visual + UI con referencias",
-  "next_step": "activar ui-style-hunter con 3 urls",
-  "monitor": {
-    "mode": "desarrollo-monitoreo",
-    "tokens_total_est": 3200
-  }
+  "decision": "delegar a area-eng",
+  "reason": "proyecto web nuevo — backend + frontend + tests",
+  "plan_generated": true,
+  "next_step": "confirmar plan y arrancar con eng-database",
+  "mcps_available": ["mcp-postgres", "mcp-github"],
+  "monitor": { "mode": "normal", "tokens_total_est": 1200 }
 }
 ```
 
-## Comandos rapidos de modo
+---
 
-El usuario puede cambiar modo con mensajes directos:
-
-- `modo simple`
-- `modo normal`
-- `modo desarrollo-monitoreo`
-- `modo pro`
-
-Respuesta esperada al cambio:
+## Comandos rápidos
 
 ```
-Modo actualizado: <modo>.
-Aplicare este estilo desde el siguiente turno.
+modo simple / modo normal / modo desarrollo-monitoreo / modo pro
+plan          → mostrar plan de trabajo actual
+progress      → mostrar TODO con estado actualizado
+nuevo proyecto → reiniciar intake completo
+```
+
+---
+
+## Modo conversación (pantalla inicial)
+
+```
+═══════════════════════════════════════════
+  SUPER ORQUESTADOR v4 — Atelion Agent Suite
+  Modos: [S]imple | [N]ormal | [DM]onitoreo | [P]ro
+═══════════════════════════════════════════
+
+¿Qué vamos a construir hoy?
+
+Áreas disponibles:
+  [D]  Diseño web         [M]  Marketing/Growth
+  [E]  Engineering        [P]  Producto
+  [O]  Operaciones        [DA] Datos/BI
+  [F]  Finanzas           [SA] Ventas/CRM
+  [HR] Recursos Humanos   [A]  Automatización
+
+→ Describí tu proyecto o tarea, o elegí un área para comenzar.
+  Haré algunas preguntas para entender bien antes de arrancar.
 ```
