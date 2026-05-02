@@ -101,10 +101,12 @@ Mode switch: <origen> -> <destino> (motivo: <1 linea>)
 |--------|------|-----------|------------------------|
 | `D` | Diseño | `area-design` | researcher, generator, animator, 3d, media, validator, saver |
 | `M` | Marketing | `area-mkt` | researcher, copy, seo, cro, growth, strategy |
-| `V` | Desarrollo | (dev-pipeline) | scaffold, docker, migrate, test, seed, env |
+| `E` | Engineering | `area-eng` | eng-backend (Marco), eng-frontend (Valentina), eng-devops (Tomás), eng-security (Lena), eng-database (Carlos), eng-qa (Sofía) |
+| `P` | Producto | `area-product` | product-manager (Ana), product-analyst (Luis) |
+| `O` | Operaciones | `area-ops` | ops-pm (Elena), ops-strategy (Rodrigo) |
+| `DA` | Datos | `area-data` | data-analyst (Camila) |
+| `V` | Desarrollo (legacy) | (dev-pipeline) | scaffold, docker, migrate, test, seed, env |
 | `A` | Automatización | (próximo) | workflow, trigger, schedule, monitor |
-| `T` | Testing | (próximo) | unit, integration, e2e, load, security |
-| `DA` | Datos | (próximo) | extract, transform, visualize, report |
 | `F` | Finanzas | (próximo) | budget, invoice, report, forecast |
 | `S` | Skills | (skill-creator) | creator, evaluator, publisher |
 
@@ -124,10 +126,14 @@ Regla: no hacer formulario masivo en un solo mensaje; agrupar en tandas cortas.
 ```
 "diseño", "landing", "UI", "componente", "visual", "animación" → D
 "marketing", "copy", "SEO", "conversión", "campaña", "email" → M
-"backend", "API", "docker", "migración", "deploy", "scaffold" → V
+"API", "endpoint", "Django", "React", "Next.js", "backend", "frontend" → E (area-eng)
+"roadmap", "feature", "PRD", "user story", "OKR", "producto" → P (area-product)
+"sprint", "backlog", "Scrum", "GTM", "estrategia", "competencia" → O (area-ops)
+"análisis de datos", "SQL", "KPI", "dashboard", "retención", "cohortes" → DA (area-data)
+"docker", "deploy", "scaffold", "migración", "infra" → E sub-agente eng-devops
+"test", "prueba", "coverage", "QA", "playwright" → E sub-agente eng-qa
+"seguridad", "OWASP", "vulnerabilidad", "auth hardening" → E sub-agente eng-security
 "automatiza", "workflow", "integra", "trigger", "schedule" → A
-"test", "prueba", "coverage", "QA", "playwright" → T
-"datos", "analytics", "dashboard", "BI", "CSV", "DB" → DA
 "presupuesto", "invoice", "finanzas", "forecast" → F
 "skill", "agente", "habilidad", "plugin", "SKILL.md" → S
 ```
@@ -339,8 +345,9 @@ Al activarse, preguntar comprimido:
 ```
 ¿Qué necesitás?
 
-  [D] Diseño      [M] Marketing   [V] Dev         [S] Skills
-  [A] Auto        [T] Testing     [DA] Datos       [F] Finanzas
+  [D] Diseño      [M] Marketing   [E] Engineering  [P] Producto
+  [O] Operaciones [DA] Datos      [V] Dev legacy   [S] Skills
+  [A] Auto        [F] Finanzas
 
   → describí la tarea
 ```
