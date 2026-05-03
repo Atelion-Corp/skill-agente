@@ -32,6 +32,32 @@ Repos `poc-*` son pruebas temporales y, al validarse, deben migrar a un nuevo re
 Antes de cambiar codigo o infraestructura, validar impacto en API, puertos, seguridad y despliegue.
 Registrar cambios relevantes en README/runbook/contexto para mantener continuidad operativa.
 
+### 8.1) Modelo skill -> agente -> subagente
+- Skill define el metodo.
+- Agente ejecuta el objetivo.
+- Subagente ejecuta una parte concreta, acotada y medible.
+
+### 8.2) Regla de orquestacion paralela
+- Solo paralelizar tareas independientes.
+- Cada subagente debe tener entrada, salida esperada y limite claro.
+- Consolidar resultados en una unica respuesta final.
+- Evitar duplicar analisis entre subagentes.
+
+### 8.3) Paquete minimo para delegacion
+- `objetivo`
+- `alcance`
+- `input`
+- `criterios de aceptacion`
+- `riesgos a vigilar`
+- `formato de salida`
+
+### 8.4) Roles base recomendados
+- `@css-color-agent`: cambios o busqueda de estilo/CSS.
+- `@perf-agent`: impacto de performance.
+- `@security-agent`: riesgos de seguridad.
+- `@qa-agent`: validacion funcional y regresion.
+- `@docs-agent`: actualizacion de documentacion.
+
 ## 9) Definicion de terminado
 Un cambio se considera completo cuando: implementacion aplicada, documentacion alineada, validacion basica ejecutada y normas duras respetadas.
 

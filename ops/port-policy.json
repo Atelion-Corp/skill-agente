@@ -1,0 +1,17 @@
+{
+  "prod": {
+    "start_port": 3000,
+    "step": 2,
+    "projects": [
+      "server-atelion-project",
+      "server-nurbit"
+    ]
+  },
+  "dev_test": {
+    "start_port": 4000,
+    "step": 2,
+    "daily_shutdown_time_utc": "03:00",
+    "archive_before_shutdown": true
+  }
+}
+

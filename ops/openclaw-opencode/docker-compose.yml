@@ -1,0 +1,80 @@
+version: "3.9"
+
+name: colossus-ai-control-plane
+
+services:
+  openclaw:
+    image: ghcr.io/openclaw/openclaw:latest
+    container_name: openclaw
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    environment:
+      OPENCLAW_ENV: "production"
+      OPENCLAW_LOG_LEVEL: "info"
+      OPENCLAW_DATA_DIR: "/data"
+      OPENCLAW_RBAC_ENABLED: "true"
+      OPENCLAW_AUDIT_ENABLED: "true"
+      OPENCLAW_COMMAND_ALLOWLIST_PATH: "/config/ssh-command-allowlist.txt"
+    volumes:
+      - openclaw_data:/data
+      - ../../config:/config:ro
+      - /var/log/colossus:/var/log/colossus
+    healthcheck:
+      test: ["CMD", "sh", "-c", "wget -qO- http://localhost:3100/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  opencode:
+    image: ghcr.io/opencode-ai/opencode:latest
+    container_name: opencode
+    restart: unless-stopped
+    ports:
+      - "3200:3200"
+    environment:
+      OPCODE_ENV: "production"
+      OPCODE_LOG_LEVEL: "info"
+      OPCODE_STORAGE_PATH: "/workspace"
+      OPCODE_OPENCLAW_ENDPOINT: "http://openclaw:3100"
+    volumes:
+      - opencode_workspace:/workspace
+      - /opt/apps:/opt/apps:rw
+      - /var/log/colossus:/var/log/colossus
+    depends_on:
+      openclaw:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "sh", "-c", "wget -qO- http://localhost:3200/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+    pid: host
+    network_mode: host
+    command:
+      - "--path.rootfs=/host"
+    volumes:
+      - "/:/host:ro,rslave"
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    restart: unless-stopped
+    ports:
+      - "38080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+
+volumes:
+  openclaw_data:
+  opencode_workspace:

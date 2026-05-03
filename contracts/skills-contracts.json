@@ -1,0 +1,1351 @@
+{
+  "generated_at": "2026-04-29T23:28:59",
+  "runtime": "openclaw",
+  "skills_count": 48,
+  "contracts": [
+    {
+      "name": "agent-context",
+      "version": "1.0.0",
+      "description": "Apply context engineering principles to multi-agent systems — optimize token usage, prevent context degradation, design minimal context packets for sub-agents, manage effective capacity. Use when designing multi-agent workflows, debugging agent performance degradation, or optimizing token costs.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "arch-validator",
+      "version": "1.0.0",
+      "description": "Valida la arquitectura de un proyecto web contra el patrón probado Django+Next.js+Docker. Usar cuando el usuario quiere revisar si su estructura de proyecto es correcta o necesita ajustes.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "area-design",
+      "version": "1.0.0",
+      "description": "Design area mini-orchestrator — classifies design requests and routes to the right sub-agents (researcher, generator, animator, 3D/graph, media, validator, saver) with minimal context packets. Use when super-orquestador routes to area D, or when a design task needs multiple skills coordinated.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "area-mkt",
+      "version": "1.0.0",
+      "description": "Marketing area mini-orchestrator — routes marketing requests to specialized sub-agents (researcher, copy, SEO, CRO, growth, strategy) with minimal context packets. Use when super-orquestador routes to area M, or when marketing tasks need multiple skills coordinated.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": true,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "deploy-guardian",
+      "version": "1.0.0",
+      "description": "Safe deployment agent workflow for pull, validation, server adaptation, smoke checks, and rollback readiness with full audit trail.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": true,
+        "filesystem": "write",
+        "ssh": true
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-3d",
+      "version": "1.0.0",
+      "description": "Guía para implementar elementos 3D interactivos en páginas web usando Three.js, React Three Fiber, o Spline. Usar cuando el usuario quiere efectos 3D, modelos, o escenas tridimensionales en su sitio.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-anime",
+      "version": "1.0.0",
+      "description": "Implement Anime.js v4 animations — micro-interactions, stagger effects, timeline sequences, spring physics, SVG morphing, scroll-triggered animations, text character animation, hover effects. Use when user wants to animate elements, add motion to UI, create cinematic page loads, entrance animations, or needs JavaScript animation beyond CSS.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-corporate",
+      "version": "1.0.0",
+      "description": "Guía para diseño de páginas corporativas/empresariales — estructura formal, paleta profesional, jerarquía clara, B2B. Usar cuando el cliente es una empresa que necesita transmitir confianza y autoridad.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-eco",
+      "version": "1.0.0",
+      "description": "Guía para diseño web eco/sostenible — paleta natural, mínimo JS, performance-first, estética verde/orgánica. Usar cuando el cliente es una marca ambiental, orgánica, o quiere transmitir sostenibilidad.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-graph",
+      "version": "1.0.0",
+      "description": "Implement interactive 3D knowledge graphs with neuron-like connections — Obsidian-style force-directed visualization using react-force-graph-3d, d3-force-3d, or Three.js. Use when user wants to visualize relationships, knowledge maps, neuron networks, node connections in 3D, documentation graphs, or activity connection maps.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-images",
+      "version": "1.0.0",
+      "description": "Guía para diseño web centrado en imágenes — galerías, heroes, art direction, optimización y lazy loading. Usar cuando el proyecto tiene contenido visual pesado.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-medio",
+      "version": "1.0.0",
+      "description": "Guía para diseño web estándar/medio — Tailwind + shadcn/ui, componentes convencionales, animaciones sutiles. Tier equilibrado para la mayoría de proyectos SaaS, apps, y startups.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-premium",
+      "version": "1.0.0",
+      "description": "Guía para diseño web premium/luxury — alta estética, animaciones sofisticadas, tipografía custom, scroll storytelling. Usar cuando el cliente ofrece producto/servicio de lujo o alto valor percibido.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-pro",
+      "version": "1.0.0",
+      "description": "Guía para diseño web profesional avanzado — design system propio, micro-interacciones, layouts complejos, tipografía custom, dark mode polished. Nivel agencia creativa o producto tech destacado.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-remotion",
+      "version": "1.0.0",
+      "description": "Create programmatic video, motion graphics, and animated content with Remotion (React-based video framework). Use when user wants to generate videos with code, create animated product demos, data visualization videos, branded motion graphics, or embed animated players in web.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-tinymce",
+      "version": "1.0.0",
+      "description": "Implement rich text editors in web applications using TinyMCE, Tiptap, or Quill — WYSIWYG editors, markdown editors, collaborative editing, custom toolbars. Use when user wants a text editor, rich content input, blog post editor, document editor, or any editable content area in web.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-uiverse",
+      "version": "1.0.0",
+      "description": "Implement physics-based scroll interactions — smooth momentum scroll (Lenis), parallax, infinite scroll, horizontal scroll sections, scroll progress indicators, scroll-triggered animations, custom scrollbars. Use when user wants cinematic scroll experience, smooth scroll physics, scroll storytelling, or UIverse-style scroll components.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "design-video",
+      "version": "1.0.0",
+      "description": "Guía para diseño web con video — backgrounds de video, players personalizados, video en hero, scroll-driven video. Usar cuando el proyecto usa video como elemento de diseño central.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "dev-docker-ops",
+      "version": "1.0.0",
+      "description": "Operaciones cotidianas de Docker Compose para proyectos Django+Next.js — levantar, bajar, rebuild, logs, exec, inspeccionar estado. Usar cuando el entorno Docker ya existe y se necesita operar.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": true,
+        "filesystem": "write",
+        "ssh": true
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "dev-dockerize",
+      "version": "1.0.0",
+      "description": "Agrega Docker a un proyecto Django+Next.js existente que no lo tiene. Genera Dockerfile para backend y frontend, docker-compose.yml completo con todos los servicios, y .env.example. Usar cuando el proyecto aún no tiene contenedores.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": true,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "dev-env",
+      "version": "1.0.0",
+      "description": "Setup y gestión de variables de entorno para proyectos Django+Next.js+Docker — crear .env, .env.example, validar variables requeridas, generar secrets. Usar al iniciar proyecto o cuando falta configuración de entorno.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "dev-migrate",
+      "version": "1.0.0",
+      "description": "Workflow completo de migraciones Django — crear, aplicar, inspeccionar, resetear y resolver conflictos. Usar cuando se trabaja con modelos Django y cambios de schema de base de datos.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "dev-pipeline",
+      "version": "1.0.0",
+      "description": "Orquestador de operaciones de desarrollo para stack Django+Next.js+Docker. Detecta qué tarea de dev se necesita y activa el skill correcto. Usar cuando el usuario dice \"quiero hacer X en el proyecto\" sin saber qué skill invocar.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": true,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "dev-ports",
+      "version": "1.0.0",
+      "description": "Configura y diagnostica puertos en proyectos Django+Next.js+Docker — mapeo de servicios, CORS, proxy nginx, puertos en conflicto. Usar cuando hay problemas de conexión entre servicios o con el exterior.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "dev-scaffold",
+      "version": "1.0.0",
+      "description": "Scaffoldear nuevas apps Django, endpoints DRF, modelos, y páginas/componentes Next.js siguiendo el patrón del stack Atelion. Usar cuando se agrega funcionalidad nueva al proyecto.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "dev-seed",
+      "version": "1.0.0",
+      "description": "Poblar datos iniciales para proyectos Django — fixtures, management commands, Factory Boy, createsuperuser. Usar cuando se necesitan datos de prueba o datos iniciales de producción.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "dev-test",
+      "version": "1.0.0",
+      "description": "Correr y escribir tests para el stack Django+Next.js — pytest para backend, Jest/Playwright para frontend, setup de CI. Usar cuando se agrega funcionalidad nueva o se quiere verificar que todo funciona.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "docs-autocomplete",
+      "version": "1.0.0",
+      "description": "Updates technical documentation periodically by consolidating validation reports, architecture changes, and operational logs into structured markdown summaries with diagrams references.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "ecosystem-curator",
+      "version": "1.0.0",
+      "description": "Curador de ecosistema de skills/agentes/plugins. Evalúa fuentes oficiales y comunitarias, selecciona complementos de alta calidad y propone integraciones multi-runtime (Claude, Codex, OpenCode y compatibles).",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": true,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "firecrawl-agent",
+      "version": "1.0.0",
+      "description": "Usa Firecrawl AI para hacer scraping web, búsqueda y extracción de datos de URLs. Ideal para research, análisis de competidores, o extraer contenido de páginas.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": true,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "hermes-agent-loop",
+      "version": "1.0.0",
+      "description": "Skill de auto-mejora continua inspirado en Hermes Agent. Ejecuta ciclos plan->run->review->learn->update con memoria persistente y mejoras incrementales seguras para Claude, Codex, OpenCode y agentes compatibles.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "write",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "mkt-base",
+      "version": "1.0.0",
+      "description": "Foundation context layer for all marketing skills — captures product, audience, USP, brand voice, and competitive positioning. Must be established before running mkt-copy, mkt-seo, mkt-cro, mkt-growth, or mkt-strategy. Use when starting marketing work or when marketing context is missing.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": true,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "mkt-copy",
+      "version": "1.0.0",
+      "description": "Professional copywriting for web, email sequences, cold outreach, social content, and ads — applying clarity-first, benefits-focused principles. Use when user needs landing page copy, email campaigns, social posts, ad creative, cold emails, or any marketing text.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": true,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "mkt-cro",
+      "version": "1.0.0",
+      "description": "Conversion Rate Optimization — audit and improve landing pages, signup flows, onboarding, forms, popups, and paywall upgrades. Use when user wants to improve conversion rates, reduce drop-off, optimize CTAs, analyze funnel performance, or get A/B test ideas.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": true,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "mkt-growth",
+      "version": "1.0.0",
+      "description": "Growth and retention strategy — churn prevention, referral programs, community marketing, lead magnets, free tools strategy, product-led growth (PLG). Use when user wants to grow user base organically, reduce churn, build referral loops, create lead magnets, or design a PLG funnel.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": true,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "mkt-pipeline",
+      "version": "1.0.0",
+      "description": "Marketing workflow orchestrator — guides from brief to execution across research, strategy, content, SEO, CRO, and growth. Use when starting a marketing project, campaign, or go-to-market, or when multiple marketing tasks need coordination.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": true,
+        "docker": true,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "mkt-seo",
+      "version": "1.0.0",
+      "description": "Comprehensive SEO audit and optimization — technical SEO, on-page, E-E-A-T, schema markup, GEO (AI search optimization for Perplexity/ChatGPT), local SEO, keyword strategy, and sitemap. Use when user wants to improve search rankings, audit a site, optimize for AI search engines, or build an SEO content strategy.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": true,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "openclaw-runtime",
+      "version": "1.0.0",
+      "description": "OpenClaw-first runtime policy for all agents and skills. Defines single runtime execution, RBAC, allowlist SSH policy, and audit requirements.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "resultado-save",
+      "version": "1.0.0",
+      "description": "Guarda y organiza todos los resultados de los skills de diseño en C:\\Users\\diego\\Documents\\Propio\\proyecto_resultado_skill\\. Persiste briefs, tokens, stacks, componentes, imágenes y recursos de forma ordenada.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "skill-creator",
+      "version": "1.0.0",
+      "description": "Generador de nuevas SKILL.md para plugins multi-runtime (Claude, Codex, OpenCode y compatibles). Usar cuando el usuario quiere crear un nuevo skill personalizado para su plugin.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "skill-pipeline",
+      "version": "1.0.0",
+      "description": "Orquestador de etapas para proyectos de diseño web. Valida progreso por fase, consulta contexto acumulado, simplifica decisiones, y decide qué skill activar a continuación. Usar para guiar proyectos complejos de inicio a fin.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": true,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "stack-guardian",
+      "version": "1.0.0",
+      "description": "Validates and enforces production best practices for architecture, multitenancy, security, deployment, and observability. Logs context for AI and emits correction plans.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "super-cerebro",
+      "version": "1.0.0",
+      "description": "Agente estratega principal. Toma un objetivo de producto/tecnico y construye plan maestro aplicando practicas open source de tldraw, TanStack Query y Vuetify.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "super-orquestador",
+      "version": "1.0.0",
+      "description": "Master multi-area orchestrator — classifies requests by area (D=design, M=marketing, V=dev, A=auto, T=test, DA=data, F=finance, S=skills), routes to area leads with minimal context packets, manages free API keys (Gemini/Groq/Mistral), accesses best practices DB. Use when user asks for \"super agents\", multi-area coordination, complex projects, or any task spanning multiple domains.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": true,
+        "filesystem": "write",
+        "ssh": true
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "super-realce-ia",
+      "version": "1.0.0",
+      "description": "Agente de ejecucion IA. Implementa capacidades de IA desacopladas del proveedor, usando API key por entorno y controles de seguridad operativa.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "tailwind-ui-hunter",
+      "version": "1.0.0",
+      "description": "Descubre, evalua y adapta componentes y bloques Tailwind UI desde fuentes confiables (open source y marketplaces), priorizando consistencia visual, accesibilidad y compatibilidad multi-runtime.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "ui-style-hunter",
+      "version": "1.0.0",
+      "description": "Busca y adapta estilos, recursos, stacks y patrones visuales de sitios de referencia para diseño UI web. Usar cuando el usuario quiere copiar, inspirarse, o analizar el diseño de un sitio.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    },
+    {
+      "name": "ultrareview",
+      "version": "1.0.0",
+      "description": "Launch multi-agent cloud code review of current branch or a GitHub PR — delivers comprehensive review across security, architecture, performance, code quality, and test coverage. Use when user asks for \"/ultrareview\", deep pre-merge review, or multi-agent code review.",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "output_schema": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "permissions": {
+        "network": false,
+        "docker": false,
+        "filesystem": "read",
+        "ssh": false
+      },
+      "error_handling": {
+        "retriable": true,
+        "max_retries": 2
+      },
+      "telemetry": {
+        "emit_status": true,
+        "emit_warnings": true,
+        "emit_duration_ms": true
+      }
+    }
+  ]
+}

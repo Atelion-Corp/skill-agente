@@ -1,0 +1,24 @@
+{
+  "archive_root": "/opt/apps/backups",
+  "tier_root": "/opt/archive_tiers",
+  "tiers": [
+    {
+      "name": "tier_30d",
+      "min_age_days": 30,
+      "compression": "zstd",
+      "encrypt": true
+    },
+    {
+      "name": "tier_180d",
+      "min_age_days": 180,
+      "compression": "xz",
+      "encrypt": true
+    }
+  ],
+  "encryption": {
+    "algorithm": "openssl-aes-256-cbc",
+    "passphrase_env": "ARCHIVE_ENCRYPTION_PASSPHRASE"
+  },
+  "admin_only": true
+}
+

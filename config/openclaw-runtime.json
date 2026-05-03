@@ -1,0 +1,25 @@
+{
+  "runtime": "openclaw",
+  "mode": "single-runtime",
+  "workspace": "./",
+  "skillsDir": "./skills",
+  "contractsPath": "./contracts/skills-contracts.json",
+  "security": {
+    "rbac": true,
+    "commandAllowlistPath": "./config/ssh-command-allowlist.txt",
+    "executionTimeoutSec": 120,
+    "auditLogDir": "./proyecto_resultado_skill/audit"
+  },
+  "observability": {
+    "enabled": true,
+    "logLevel": "info",
+    "emitRunMetrics": true
+  },
+  "hermes": {
+    "enabled": true,
+    "checkpointMode": "phase-boundary",
+    "statePath": "./proyecto_resultado_skill/proyectos/skill_agente/hermes-loop-state.json",
+    "logPath": "./proyecto_resultado_skill/proyectos/skill_agente/hermes-loop-log.md"
+  }
+}
+

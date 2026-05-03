@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "default_deny": true,
+  "roles": {
+    "agent-dev": {
+      "description": "Crea y modifica solo entornos/rutas de desarrollo.",
+      "allowed_path_tags": ["dev", "shared-docs", "shared-scripts"],
+      "allowed_actions": ["read", "create", "modify", "validate", "deploy-dev"]
+    },
+    "agent-prod": {
+      "description": "Modifica solo rutas catalogadas productivas.",
+      "allowed_path_tags": ["prod", "shared-docs", "shared-scripts"],
+      "allowed_actions": ["read", "modify", "validate", "deploy-prod", "rollback-prod"]
+    },
+    "agent-ops": {
+      "description": "Opera infraestructura, monitoreo, backup, lifecycle.",
+      "allowed_path_tags": ["infra", "prod", "dev", "shared-scripts", "shared-docs"],
+      "allowed_actions": ["read", "modify", "validate", "backup", "monitor", "archive", "restart"]
+    },
+    "agent-security": {
+      "description": "Audita seguridad, secretos y cumplimiento.",
+      "allowed_path_tags": ["security", "shared-docs", "shared-scripts", "infra"],
+      "allowed_actions": ["read", "validate", "audit", "rotate-secrets"]
+    },
+    "agent-docs": {
+      "description": "Mantiene documentación y reportes.",
+      "allowed_path_tags": ["shared-docs", "reports"],
+      "allowed_actions": ["read", "create", "modify", "validate"]
+    }
+  },
+  "path_tags": [
+    { "tag": "prod", "patterns": ["/opt/apps/server-*", "/opt/apps/servidor-*", "*/docker-compose.prod.yml"] },
+    { "tag": "dev", "patterns": ["/opt/apps/project*", "*/docker-compose.yml"] },
+    { "tag": "infra", "patterns": ["/opt/colossus/*", "/var/log/colossus/*", "/opt/archive_tiers/*"] },
+    { "tag": "security", "patterns": ["*/security/*", "*/secrets*"] },
+    { "tag": "shared-docs", "patterns": ["*/docs/*"] },
+    { "tag": "shared-scripts", "patterns": ["*/scripts/*"] },
+    { "tag": "reports", "patterns": ["*/proyecto_resultado_skill/*"] }
+  ]
+}
+

@@ -1,0 +1,18 @@
+uname
+cat /etc/os-release
+lscpu
+free -h
+df -hT
+docker --version
+docker compose version
+docker info
+docker ps
+ss -tulpen
+ls -la /opt
+ls -la /opt/apps
+ls -la /opt/ai-agent
+ls -la /srv
+find /opt /srv -maxdepth 3 -type f -name docker-compose.yml
+find /opt /srv -maxdepth 3 -type f -name compose.yml
+find /opt /srv -maxdepth 3 -type f -name Dockerfile
+find /opt /srv -maxdepth 3 -type f -name .env.example

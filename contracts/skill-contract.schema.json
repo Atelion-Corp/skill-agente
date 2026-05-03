@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill Contract",
+  "type": "object",
+  "required": [
+    "name",
+    "version",
+    "input_schema",
+    "output_schema",
+    "permissions",
+    "error_handling",
+    "telemetry"
+  ],
+  "properties": {
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "input_schema": { "type": "object" },
+    "output_schema": { "type": "object" },
+    "permissions": {
+      "type": "object",
+      "required": ["filesystem", "network", "ssh", "docker"],
+      "properties": {
+        "filesystem": { "type": "string", "enum": ["none", "read", "write"] },
+        "network": { "type": "boolean" },
+        "ssh": { "type": "boolean" },
+        "docker": { "type": "boolean" }
+      }
+    },
+    "error_handling": {
+      "type": "object",
+      "required": ["retriable", "max_retries"],
+      "properties": {
+        "retriable": { "type": "boolean" },
+        "max_retries": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "telemetry": {
+      "type": "object",
+      "required": ["emit_duration_ms", "emit_status", "emit_warnings"],
+      "properties": {
+        "emit_duration_ms": { "type": "boolean" },
+        "emit_status": { "type": "boolean" },
+        "emit_warnings": { "type": "boolean" }
+      }
+    }
+  }
+}
+

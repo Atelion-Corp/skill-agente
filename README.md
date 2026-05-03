@@ -10,6 +10,15 @@ Plugin de skills multi-agente para Claude, Codex y OpenClaw-first runtimes.
 
 ## Arquitectura multi-agente v2.0
 
+## Que es cada cosa (simple)
+- `Skill`: instruccion reusable para una tarea.
+- `Agente`: ejecutor con objetivo completo.
+- `Subagente`: ejecutor especializado de una parte del objetivo.
+- `Orquestador`: coordina agentes/subagentes y consolida resultados.
+
+## Flujograma Visual
+```text
+Usuario -> super-orquestador -> (area-design / area-mkt / dev-pipeline) -> resultado-save
 ```
 Usuario
   │
@@ -27,6 +36,18 @@ super-orquestador  ← master orchestrator, contexto mínimo, 4 modos
 
 Sub-agentes son **expertos con identidad** — cada uno tiene persona, reglas FORBIDDEN explícitas y métricas de éxito verificables.
 
+## Flujo Paralelo Recomendado
+```text
+Usuario
+  -> super-orquestador
+    -> @css-color-agent (busqueda CSS)
+    -> @perf-agent (riesgo rendimiento)
+    -> @security-agent (riesgo seguridad)
+  -> consolidacion final unica
+```
+
+Regla: ejecutar en paralelo solo tareas independientes. Si una tarea depende de otra, ejecutar en serie.
+
 ## Normas Duras
 - API base oficial: `/api/`.
 - Prohibido usar `/api/v1/` o cualquier versionado en la ruta base API.
@@ -43,6 +64,13 @@ Sub-agentes son **expertos con identidad** — cada uno tiene persona, reglas FO
 - El servidor redirige dominios a puertos Docker segun servicio.
 
 ## OpenClaw-first baseline
+
+## Documentacion Operativa Recomendada
+- Playbook de orquestacion: `docs/agent-orchestration-playbook.md`
+- Alineacion autoskills: `docs/autoskills-alignment.md`
+- Plantilla skill: `docs/templates/skill-template.md`
+- Plantilla agente: `docs/templates/agent-template.md`
+- Plantilla subagente: `docs/templates/subagent-template.md`
 
 - Runtime único: OpenClaw.
 - Contratos de skills: `contracts/skills-contracts.json`.
