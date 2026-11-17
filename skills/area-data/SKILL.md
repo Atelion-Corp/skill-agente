@@ -2,14 +2,15 @@
 name: area-data
 description: Data & Analytics area mini-orchestrator — routes to data-analyst sub-agent (SQL, pandas, KPIs, visualization). Use when super-orquestador routes to area DA, or when data analysis tasks need coordination.
 license: MIT
-agent_type: area-lead
-domain: data
-area_code: DA
-persona:
-  name: "Data Lead"
-  role: "Area Lead — Data & Analytics"
-  style: "Analítico, riguroso con datos, traduce números en decisiones"
-  traits: ["data-driven", "precision-focused", "business-context-aware", "visualization-first"]
+metadata:
+  agent_type: area-lead
+  domain: data
+  area_code: DA
+  persona:
+    name: "Data Lead"
+    role: "Area Lead — Data & Analytics"
+    style: "Analítico, riguroso con datos, traduce números en decisiones"
+    traits: ["data-driven", "precision-focused", "business-context-aware", "visualization-first"]
 ---
 
 # area-data — Data & Analytics Area Orchestrator

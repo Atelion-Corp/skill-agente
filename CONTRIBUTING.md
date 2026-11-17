@@ -1,21 +1,17 @@
 # Contributing
 
-## Branching
-- Usar ramas cortas por cambio.
-- Commits atómicos y mensajes claros.
+Contributions are welcome through focused pull requests.
 
-## Quality Gate
-Antes de PR ejecutar:
+1. Create a short-lived branch.
+2. Keep skills portable and never include private infrastructure or credentials.
+3. Keep custom frontmatter values under `metadata`.
+4. Preserve attribution for adapted third-party work.
+5. Synchronize manifests and validate:
 
-```powershell
-pwsh -File scripts/validate-plugin.ps1
+```bash
+python -m pip install PyYAML
+python scripts/sync-manifests.py
+for skill in skills/*; do python scripts/quick-validate.py "$skill"; done
 ```
 
-## Scope
-- No romper compatibilidad entre manifiestos (`.claude-plugin` y `.codex-plugin`).
-- Si agregas un skill, decláralo en ambos manifiestos.
-- Si agregas/ajustas orquestación, documentar usando:
-  - `docs/agent-orchestration-playbook.md`
-  - `docs/templates/skill-template.md`
-  - `docs/templates/agent-template.md`
-  - `docs/templates/subagent-template.md`
+Explain the use case and validation evidence in the pull request. Report security issues privately.

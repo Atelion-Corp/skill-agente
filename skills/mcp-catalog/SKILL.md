@@ -2,8 +2,9 @@
 name: mcp-catalog
 description: Enterprise MCP catalog — complete reference of available MCPs organized by business function (docs, email, PM, BI, CRM, finance, databases, dev, communication). Use when selecting MCPs for a project or configuring integrations for sub-agents.
 license: MIT
-agent_type: utility
-domain: all
+metadata:
+  agent_type: utility
+  domain: all
 ---
 
 # MCP Catalog — Herramientas Empresariales Integradas

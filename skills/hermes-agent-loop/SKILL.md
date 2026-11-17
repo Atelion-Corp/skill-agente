@@ -1,6 +1,6 @@
 ---
 name: hermes-agent-loop
-description: Skill de auto-mejora continua inspirado en Hermes Agent. Ejecuta ciclos plan->run->review->learn->update con memoria persistente y mejoras incrementales seguras para Claude, Codex, OpenCode y agentes compatibles.
+description: Skill de auto-mejora continua inspirado en Hermes Agent. Ejecuta ciclos de planificación, ejecución, revisión, aprendizaje y actualización con memoria persistente y mejoras incrementales seguras para agentes compatibles.
 license: MIT
 ---
 

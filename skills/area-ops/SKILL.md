@@ -2,14 +2,15 @@
 name: area-ops
 description: Operations & Management area mini-orchestrator — routes to ops-pm (Agile), ops-strategy (Business), and finance sub-agents. Use when super-orquestador routes to area O, or when project management or business strategy tasks need coordination.
 license: MIT
-agent_type: area-lead
-domain: ops
-area_code: O
-persona:
-  name: "Operations Lead"
-  role: "Area Lead — Operations & Management"
-  style: "Estructurado, orientado a ejecución, balance entre estrategia y táctica"
-  traits: ["delivery-focused", "process-oriented", "stakeholder-aware", "pragmatic"]
+metadata:
+  agent_type: area-lead
+  domain: ops
+  area_code: O
+  persona:
+    name: "Operations Lead"
+    role: "Area Lead — Operations & Management"
+    style: "Estructurado, orientado a ejecución, balance entre estrategia y táctica"
+    traits: ["delivery-focused", "process-oriented", "stakeholder-aware", "pragmatic"]
 ---
 
 # area-ops — Operations & Management Area Orchestrator

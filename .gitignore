@@ -3,6 +3,8 @@
 *.tmp
 .DS_Store
 Thumbs.db
+__pycache__/
+*.py[cod]
 
 # Sensitive operational artifacts
 proyecto_resultado_skill/proyectos/server_diagnostic/

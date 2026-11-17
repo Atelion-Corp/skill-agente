@@ -1,12 +1,7 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
-Se soporta la rama principal (`main`) y el último tag publicado.
+The current default branch is supported.
 
-## Reporting a Vulnerability
-Reportar por issue privado en el repo destino o por canal interno de Atelion.
-Incluye:
-- Descripción del riesgo
-- Pasos de reproducción
-- Impacto esperado
-- Propuesta de mitigación
+Report vulnerabilities privately through **Security → Report a vulnerability** in GitHub. Do not open public issues containing exploit details, credentials, or personal data.
+
+Include the affected skill or script, reproduction steps, impact, and a suggested mitigation when available.

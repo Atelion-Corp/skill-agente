@@ -2,8 +2,9 @@
 name: super-orquestador
 description: Master multi-area orchestrator — runs a structured discovery intake before delegating, generates a visible TODO plan, routes to area leads (D/M/E/P/O/DA/F/HR/AC/SA/S) with minimal context packets, manages free API keys, accesses best practices DB, and supports 4 operational modes. Use when user asks for "super agents", any multi-area task, or at the start of any project.
 license: MIT
-agent_type: orchestrator
-domain: all
+metadata:
+  agent_type: orchestrator
+  domain: all
 ---
 
 # super-orquestador v4 — Master Orchestrator con Intake + Plan de Trabajo
