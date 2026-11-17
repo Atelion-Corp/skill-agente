@@ -64,6 +64,7 @@
     "./skills/eng-frontend",
     "./skills/eng-qa",
     "./skills/eng-security",
+    "./skills/figma-playwright-design",
     "./skills/finance-analyst",
     "./skills/find-animation-opportunities",
     "./skills/firecrawl-agent",
@@ -119,6 +120,7 @@
     "./skills/tailwind-ui-hunter",
     "./skills/ui-style-hunter",
     "./skills/ultrareview",
+    "./skills/unlumen-ui",
     "./skills/workplace-assistant",
     "./skills/write-swift"
   ]

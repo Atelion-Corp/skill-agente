@@ -1,6 +1,6 @@
 # Atelion Agent Skills
 
-Open-source skill pack for Codex, Claude Code, OpenCode, and compatible agents. It contains 116 editable skills covering engineering, DevOps, design, marketing, security, automation, writing, presentations, calendar planning, business operations, and multi-agent coordination.
+Open-source skill pack for Codex, Claude Code, OpenCode, and compatible agents. It contains 118 editable skills covering engineering, DevOps, design, marketing, security, automation, writing, presentations, calendar planning, business operations, and multi-agent coordination.
 
 ## Included
 
@@ -60,8 +60,8 @@ Add the repository as a local plugin or marketplace source. The complete manifes
 | Orchestration | `super-orquestador`, `agent-context`, `area-eng`, `area-design` |
 | Programming | `eng-backend`, `eng-frontend`, `eng-database`, `eng-qa`, `write-swift` |
 | DevOps and security | `eng-devops`, `deploy-guardian`, `stack-guardian`, `security-audit` |
-| Design and motion | `impeccable`, `design-taste-frontend`, `emil-design-eng`, `animate` |
-| UI libraries | `magic-ui`, `smoothui`, `pick-ui-library`, `ask-sonner` |
+| Design and motion | `impeccable`, `design-taste-frontend`, `emil-design-eng`, `figma-playwright-design` |
+| UI libraries | `magic-ui`, `smoothui`, `unlumen-ui`, `pick-ui-library` |
 | Marketing | `mkt-pipeline`, `mkt-copy`, `mkt-seo`, `mkt-cro`, `ig-plan` |
 | Automation and work | `automation-engineer`, `workplace-assistant`, `calendar-planner` |
 | Writing and presentations | `content-writer`, `presentation-designer`, `docs-autocomplete` |
